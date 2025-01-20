@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+Piper J-3 Cub simulation configuration. This files ties together all the components
+used by FGFS to represent the J-3 Cub. Components include the flight data
+model, instrument panel, and external 3D model.
+************************************************************************
+version 2.0  090410-->
+<PropertyList>
+
+    <sim>
+        <description>Piper PA11 Cub Special (1949 model) (JSBSim)</description>
+        <long-description>The Piper PA-11 Cub Special is a later-production variant of the J-3 Cub manufactured by Piper Aircraft. The PA-11 is a high-wing braced cabin monoplane with a tail-wheel landing gear. The enclosed cabin has two tandem seats.</long-description>
+
+        <rating>
+            <FDM type="int">4</FDM>
+            <systems type="int">4</systems>
+            <model type="int">4</model>
+            <cockpit type="int">4</cockpit>
+        </rating>
+
+        <author>awall86 (Adrian Fernandez Gomez). A special thanks to Octal450 (Josh Davidson) for his excelent Aircraft Config Center Utility</author>
+        <status>alpha</status>
+        <aircraft-version>2025.01.1A</aircraft-version>
+        <minimum-fg-version>2020.3.19</minimum-fg-version> 
+ 
+        <rating>
+            <FDM type="int">2</FDM>
+            <systems type="int">3</systems>
+            <model type="int">4</model>
+            <cockpit type="int">4</cockpit>
+        </rating>
+
+        <flight-model archive="y">jsb</flight-model>
+        <aero archive="y">pa11</aero>
+
+        <sound>
+            <path>pa11-sound.xml</path>
+        </sound>
+
+        <model>
+            <path archive="y">Aircraft/pa11/Models/pa11.xml</path>  
+		</model>
+  <!-- position the pilot viewpoint and angle -->
+ 
+        <view>
+            <internal type="bool" archive="y">true</internal>
+            <config>
+                <x-offset-m archive="y" type="double">-0.20</x-offset-m>
+                <y-offset-m archive="y" type="double">0.460</y-offset-m>
+                <z-offset-m archive="y" type="double">2.70</z-offset-m>
+                <pitch-offset-deg type="double">-11.5</pitch-offset-deg>
+                <default-field-of-view-deg>75</default-field-of-view-deg>
+            </config>
+        </view>
+        <systems>
+            <path>Systems/systems.xml</path>
+            
+            <property-rule n="100">
+                <path>Systems/engine.xml</path>
+            </property-rule>
+
+        </systems>
+    </sim>
+
+    <controls>
+        <engines>
+            <engine>
+                <primer type="double">0</primer>
+                <primer-lever type="bool">false</primer-lever>
+                <use-primer type="bool">false</use-primer>
+                <magnetos>0</magnetos>
+            </engine>
+            <current-engine>
+                <throttle type="double">0.0</throttle>
+                <mixture type="double">0</mixture>
+                <starter type="bool">false</starter>
+            </current-engine>
+        </engines>
+    </controls>
+	
+</PropertyList>
