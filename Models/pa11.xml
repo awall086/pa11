@@ -1,0 +1,604 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <path>pa11.ac</path>
+
+    <params>
+        <doors>
+            <right>
+                <property>sim/multiplay/generic/float[0]</property>
+            </right>
+        </doors>
+		<windows>
+            <right>sim/multiplay/generic/float[1]</right>
+            <left>sim/multiplay/generic/float[2]</left>
+        </windows>
+	</params>
+
+
+	<!--		magneto switch		-->
+	 <animation>
+		<type>knob</type>
+		<object-name>Magneto</object-name>
+		<action>
+			<binding>
+				<command>property-adjust</command>
+				<property>/controls/switches/magnetos</property>
+				<factor>1</factor>
+				<min>0</min>
+				<max>3</max>
+			</binding>
+		</action>
+		<!--   <increase>
+			 <binding>
+			   <command>nasal</command>
+			   <script>c152.click("magneto-forward")</script>
+			 </binding>
+		   </increase>
+		   <decrease>
+			 <binding>
+			   <command>nasal</command>
+			   <script>c152.click("magneto-back")</script>
+			 </binding>
+		   </decrease> -->
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>magneto-switch</tooltip-id>
+				<label>Magnetos: %s</label>
+				<property>controls/switches/magnetos</property>
+				<mapping>nasal</mapping>
+				<script>
+					var m = arg[0];
+					if (m == 1) return 'RIGHT';
+					if (m == 2) return 'LEFT';
+					if (m == 3) return 'BOTH';
+					return 'OFF';
+				</script>
+			</binding>
+		</hovered>
+	 </animation>
+	 <animation>
+		<name>mags-key</name>
+		<type>rotate</type>
+		<object-name>Magneto</object-name>
+		<property>/controls/switches/magnetos</property>
+		<factor>30</factor>
+		<center>
+			<x-m>1.88329</x-m>
+			<y-m>-0.350494</y-m>
+			<z-m>-0.01125</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!--	fuel valve		-->
+	<animation>
+		<type>rotate</type>
+		<object-name>fuel-valve</object-name>
+		<property>/controls/fuel/fuel-on</property>
+		<factor>-90</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>1.57576</x-m>
+			<y-m>-0.330053</y-m>
+			<z-m>-0.101746</z-m>
+		</center>
+	</animation>
+	<animation>
+	   <type>pick</type>
+	   <object-name>fuel-valve</object-name>
+	   <visible>true</visible>
+	   <action>
+		 <button>0</button>
+		 <repeatable>false</repeatable>
+		 <binding>
+		   <command>property-toggle</command>
+			<property>/controls/fuel/fuel-on</property>
+		 </binding>
+	   </action>
+	   <hovered>
+		<binding>
+		  <command>set-tooltip</command>
+		  <tooltip-id>Fuel Valve</tooltip-id>
+		  <label>Fuel Valve: %s</label>
+		  <mapping>on-off</mapping>
+		<property>/controls/fuel/fuel-on</property>
+	   </binding>
+	   </hovered>
+	</animation>        
+
+	<animation> 
+		<type>rotate</type>
+		<object-name>needle_rpm</object-name>
+		<property>/engines/engine[0]/rpm</property>
+		<interpolation>
+			<entry><ind>   0</ind><dep>     0</dep></entry>
+			<entry><ind> 500</ind><dep> 39.59</dep></entry>
+			<entry><ind>1000</ind><dep> 80.69</dep></entry>
+			<entry><ind>1500</ind><dep>120.72</dep></entry>
+			<entry><ind>2000</ind><dep>161.41</dep></entry>
+			<entry><ind>2500</ind><dep>201.95</dep></entry>
+			<entry><ind>3000</ind><dep>241.72</dep></entry>
+			<entry><ind>3500</ind><dep>255.72</dep></entry>			
+		</interpolation>
+		<axis> 
+			<x>1</x>
+			<y>0</y>
+			<z>0.15</z>
+		</axis>
+		<center>
+			<x-m>1.3351</x-m>
+			<y-m>-0.2219</y-m>
+			<z-m>0.1654</z-m>   
+		</center>
+	</animation>
+
+	<!-- Airspeed indicator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>needle_airspeed</object-name>
+		<property>instrumentation/airspeed-indicator/indicated-speed-kt</property>
+		<interpolation>
+			<entry><ind>     0</ind><dep>  0.00</dep></entry>
+			<entry><ind> 26.07</ind><dep> 26.40</dep></entry>
+			<entry><ind> 34.75</ind><dep> 40.10</dep></entry>
+			<entry><ind> 52.14</ind><dep> 80.06</dep></entry>
+			<entry><ind> 69.52</ind><dep>137.44</dep></entry>
+			<entry><ind> 86.90</ind><dep>198.12</dep></entry>
+			<entry><ind>104.28</ind><dep>270.53</dep></entry>
+			<entry><ind>121.66</ind><dep>336.90</dep></entry>
+			<entry><ind>139.03</ind><dep>345.30</dep></entry>
+		</interpolation>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>-0.15</z>
+		</axis>
+		<center>
+			<x-m>1.3371</x-m>
+			<y-m>-0.1089</y-m>
+			<z-m>0.1656</z-m>   
+		</center>
+	</animation>
+
+
+	<!-- Altimeter -->
+	<animation>
+		<type>rotate</type>
+		<object-name>needle_alt_1000</object-name>
+		<property>/instrumentation/altimeter/indicated-altitude-ft</property>
+		<factor>0.036</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>-0.15</z>
+		</axis>
+		<center>
+			<x-m>1.3356</x-m>
+			<y-m>0.1019</y-m>
+			<z-m>0.1653</z-m>  
+		</center>
+	</animation>
+	<animation>
+		<type>knob</type>
+		<object-name>Alt_setting</object-name>
+		<property>/instrumentation/altimeter/setting-inhg</property>
+		<factor>-800</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>1.3487</x-m>
+			<y-m>0.1002</y-m>
+			<z-m>0.1145</z-m>
+		</center>
+		<action>
+			<binding>
+				<command>property-adjust</command>
+				<property>/instrumentation/altimeter/setting-inhg</property>
+				<factor>0.01</factor>
+				<min>26.0</min>
+				<max>33.0</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>  
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>alt-setting</tooltip-id>
+				<label>Altimeter In Hg: %5.2f</label>
+				<property>instrumentation/altimeter/setting-inhg</property>
+			</binding>
+		</hovered>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>needle_oil_temp</object-name>
+		<property>engines/engine/oil-temperature-degf</property>
+		<interpolation>
+			<entry><ind>  0</ind><dep> 0.00</dep></entry>
+			<entry><ind>100</ind><dep> 4.00</dep></entry>
+			<entry><ind>120</ind><dep> 7.36</dep></entry>
+			<entry><ind>140</ind><dep>11.31</dep></entry>
+			<entry><ind>160</ind><dep>19.17</dep></entry>
+			<entry><ind>180</ind><dep>25.96</dep></entry>
+			<entry><ind>200</ind><dep>34.05</dep></entry>
+			<entry><ind>220</ind><dep>42.72</dep></entry>			
+			<entry><ind>240</ind><dep>50.59</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>1.3303</x-m>
+			<y-m>0.2223</y-m>
+			<z-m>0.2026</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0.15</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>needle_oil_press</object-name>
+		<property>engines/engine/oil-pressure-psi</property>
+		<interpolation>
+			<entry><ind>  0</ind><dep> 0.00</dep></entry>
+			<entry><ind> 40</ind><dep>10.58</dep></entry>
+			<entry><ind> 50</ind><dep>25.33</dep></entry>
+			<entry><ind> 60</ind><dep>40.06</dep></entry>
+			<entry><ind>100</ind><dep>59.00</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>1.3390</x-m>
+			<y-m>0.2223</y-m>
+			<z-m>0.1290</z-m>
+		</center>
+		<axis>
+		   <x>-1</x>
+		   <y>0</y>
+		   <z>-0.15</z>
+		</axis>
+	</animation>
+
+
+	<!-- Propeller -->
+
+	<animation>
+		<name>PropellerSlowGroup</name>
+		<object-name>propeller_slow</object-name>
+		<object-name>cone_slow</object-name>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>PropellerSlowGroup</object-name>
+		<condition>
+			<less-than>
+				<property>engines/engine[0]/rpm</property>
+				<value>540</value>
+			</less-than>
+		</condition>
+	</animation>
+ 
+	<animation>
+		<type>spin</type>
+		<object-name>PropellerSlowGroup</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<factor>-1.0</factor>
+		<center>
+			<x-m>0.181877</x-m>
+			<y-m>0.005772</y-m>
+			<z-m>0.000026</z-m>
+		</center>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<name>PropellerGroup</name>
+		<object-name>propellerF</object-name>
+		<object-name>propellerR</object-name>
+		<object-name>cone</object-name>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>PropellerGroup</object-name>
+		<condition>
+			<greater-than>
+				<property>engines/engine[0]/rpm</property>
+				<value>540</value>
+			</greater-than>
+		</condition>
+	</animation>
+ 
+	<animation>
+		<type>spin</type>
+		<object-name>PropellerGroup</object-name>
+		<property>engines/engine[0]/rpm</property>
+		<factor>-1.0</factor>
+		<center>
+			<x-m>0.181877</x-m>
+			<y-m>0.005772</y-m>
+			<z-m>0.000026</z-m>
+		</center>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<!-- Left Main Landing Gear -->
+<!--	<animation>
+		<name>LeftWheelGroup</name>
+		<object-name>Left_Wheel</object-name>
+		<object-name>Left_Strut</object-name>
+		<object-name>FairingL</object-name>
+	</animation> -->
+	 
+	<animation>
+		<type>spin</type>
+		<object-name>Left_Wheel</object-name>
+		<property>gear/gear[1]/rollspeed-ms</property>
+		<factor>47.74</factor>
+		<center>
+			<x-m>1.62784</x-m>
+			<y-m>-0.9811</y-m>
+			<z-m>-1.2505</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+<!--	<animation>
+		<type>rotate</type>
+		<object-name>LeftWheelGroup</object-name>
+		<property>gear/gear[1]/compression-norm</property>
+		<factor>10.0</factor>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.437</x-m>
+			<y-m>-0.268</y-m>
+			<z-m>-0.523</z-m>
+		</center>
+	</animation> -->
+
+	<!-- Right Main Landing Gear -->
+
+<!--	<animation>
+		<name>RightWheelGroup</name>
+		<object-name>Right_Wheel</object-name>
+		<object-name>Right_Strut</object-name>
+		<object-name>FairingR</object-name>
+	</animation> -->
+
+	<animation>
+		<type>spin</type>
+		<object-name>Right_Wheel</object-name>
+		<property>gear/gear[2]/rollspeed-ms</property>
+		<factor>47.74</factor>
+		<center>
+			<x-m>1.62784</x-m>
+			<y-m>0.96328</y-m>
+			<z-m>-1.2505</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+	  
+<!--	<animation>
+		<type>rotate</type>
+		<object-name>RightWheelGroup</object-name>
+		<property>gear/gear[2]/compression-norm</property>
+		<factor>10.0</factor>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+		<center>
+			<x-m>2.437</x-m>
+			<y-m>0.268</y-m>
+			<z-m>-0.523</z-m>
+		</center>
+	</animation> -->
+
+	<!-- Right Door -->
+
+    <animation>
+        <type>rotate</type>
+        <object-name>RDoor</object-name>
+        <object-name>RDoor_ext</object-name>
+        <object-name>RDoor-ext-handle-m</object-name>
+        <object-name>RDoor-int-handle</object-name>
+                
+        <property alias="../../params/doors/right/property"/>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>0.25</ind>
+                <dep>0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-170.0</dep>
+            </entry>
+        </interpolation>
+		<center>
+			<x-m>2.0483</x-m>
+			<y-m>0.3892</y-m>
+			<z-m>-0.2166</z-m>
+		</center>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>RDoor-ext-handle-m</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.rightDoor.toggle();</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>door-handle-l</tooltip-id>
+                <label>Open/Close Door</label>
+            </binding>
+        </hovered>
+    </animation>
+
+   <animation>
+        <type>rotate</type>
+        <object-name>RDoor-ext-handle-m</object-name>                
+        <property alias="../../params/doors/right/property"/>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>0.25</ind>
+                <dep>80.0</dep>
+            </entry>
+<!--            <entry>
+                <ind>1.0</ind>
+                <dep>80.0</dep>
+            </entry> -->
+        </interpolation>
+		<center>
+			<x-m>2.0183</x-m>
+			<y-m>0.3978</y-m>
+			<z-m>0.1003</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+    </animation>
+
+    <animation>
+        <type>pick</type>
+        <object-name>RDoor-int-handle</object-name>
+        <condition>
+            <equals>
+                <property>/sim/model/door-positions/rightDoor/opened</property>
+                <value>0.0</value>
+            </equals>
+        </condition>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.rightDoor.toggle();</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>door-handle-int-r</tooltip-id>
+                <label>Open Door</label>
+            </binding>
+        </hovered>
+    </animation> 
+    <animation>
+        <type>pick</type>
+        <object-name>RDoor</object-name>
+        <condition>
+            <equals>
+                <property>/sim/model/door-positions/rightDoor/opened</property>
+                <value>1.0</value>
+            </equals>
+        </condition>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.rightDoor.toggle();</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>door-close-R</tooltip-id>
+                <label>Close Door</label>
+            </binding>
+        </hovered>
+    </animation>
+
+   <animation>
+        <type>rotate</type>
+        <object-name>RDoor-int-handle</object-name>                
+        <property alias="../../params/doors/right/property"/>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>0.15</ind>
+                <dep>80.0</dep>
+            </entry>
+<!--            <entry>
+                <ind>1.0</ind>
+                <dep>80.0</dep>
+            </entry> -->
+        </interpolation>
+		<center>
+			<x-m>2.0183</x-m>
+			<y-m>0.3391</y-m>
+			<z-m>0.1006</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+    </animation>
+
+</PropertyList>

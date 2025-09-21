@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <sim>
+        <description>Piper PA11 Cub Special (1949)</description>
+        <long-description>The Piper PA-11 Cub Special is a later-production variant of the J-3 Cub manufactured by Piper Aircraft. The PA-11 is a high-wing braced cabin monoplane with a tail-wheel landing gear. The enclosed cabin has two tandem seats.</long-description>
+
+        <tags>
+            <tag>ga</tag>
+            <tag>piper</tag>
+            <tag>piston</tag>
+            <tag>single-engine</tag>
+            <tag>fixed-gear</tag>
+        </tags>
+
+        <author>awall86 (Adrian Fernandez Gomez). A special thanks to Octal450 (Josh Davidson) for his excelent Aircraft Config Center Utility</author>
+        <status>alpha</status>
+        <aircraft-version>2024.9.11A</aircraft-version>
+        <minimum-fg-version>2024.1.1</minimum-fg-version> 
+
+        <rating>
+            <FDM type="int">2</FDM>
+            <systems type="int">2</systems>
+            <model type="int">2</model>
+            <cockpit type="int">2</cockpit>
+        </rating>
+
+        <flight-model archive="y">jsb</flight-model>
+        <aero archive="y">pa11</aero>
+
+        <sound>
+            <path>pa11-sound.xml</path>
+        </sound>
+
+        <model>
+            <path archive="y">Aircraft/pa11/Models/pa11.xml</path>  
+		</model>
+		
+		<gui n="0" include="gui/pa11-gui.xml"/>
+		
+		<menubar include="gui/dialogs/pa11-menu.xml"/>
+
+		<!-- position the pilot viewpoint and angle -->
+ 
+        <view>
+            <internal type="bool" archive="y">true</internal>
+            <config>
+                <x-offset-m archive="y" type="double"> 0.00</x-offset-m>
+                <y-offset-m archive="y" type="double">0.460</y-offset-m>
+                <z-offset-m archive="y" type="double"> 2.00</z-offset-m>
+                <pitch-offset-deg type="double">-11.5</pitch-offset-deg>
+                <default-field-of-view-deg>75</default-field-of-view-deg>
+            </config>
+        </view>
+ 
+        <!-- Splash screens. One is randomly chosen when FlightGear starts -->
+        <previews>
+            <preview>
+                <type>cockpit</type>
+                <path>Previews/pa11-preview0.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Previews/pa11-preview1.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+        </previews>
+ 
+		<systems>
+ <!--           <path>Systems/systems.xml</path>  -->
+            
+            <property-rule n="100">
+                <path>Systems/engine.xml</path>
+            </property-rule>
+            <property-rule n="101">
+                <path>Aircraft/pa11/Systems/ground-effects.xml</path>
+            </property-rule>
+        </systems>
+
+        <multiplay>
+            <generic>
+                <float n="0" alias="/sim/model/door-positions/rightDoor/position-norm-effective"/>
+                <float n="1" alias="/sim/model/door-positions/rightWindow/position-norm"/>
+				<float n="2" alias="/sim/model/door-positions/leftWindow/position-norm"/>            
+			</generic>
+        </multiplay>
+
+    </sim>
+
+    <fdm>
+        <jsbsim>
+            <propulsion>
+                <tank n="1">
+                    <collector-valve type="int">0</collector-valve>
+                </tank>
+            </propulsion>
+        </jsbsim>
+    </fdm>
+
+    <consumables>
+        <fuel>
+            <tank n="0">
+                <name type="string">carb Bowl</name>
+            </tank>
+            
+            <tank n="1">
+                <name type="string">Left Wing</name>
+                <capacity-gal_us type="double">17.0</capacity-gal_us>
+                <unusable-gal_us type="double">0.60</unusable-gal_us>
+                <level-gal_us type="double">17.0</level-gal_us>
+            </tank>
+        </fuel>
+    </consumables>
+
+    <nasal>
+        <pa11>
+            <file>Nasal/pa11.nas</file>
+			<file>Nasal/doors.nas</file>
+        </pa11>
+
+		<acconfig>
+			<file>Aircraft/pa11/AircraftConfig/acconfig.nas</file>
+		</acconfig>
+    </nasal>
+
+    <payload>
+        <weight>
+            <name type="string">Pilot</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">200.0</max-lb>
+        </weight>
+        <weight>
+            <name type="string">Co-Pilot</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">200.0</max-lb>
+        </weight>
+        <weight>
+            <name type="string">Baggage</name>
+            <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+            <min-lb type="double">0.0</min-lb>
+            <max-lb type="double">10.0</max-lb>
+        </weight>
+    </payload>
+
+    <controls>
+        <engines>
+            <engine>
+                <primer type="double">0</primer>
+                <primer-lever type="bool">false</primer-lever>
+                <use-primer type="bool">false</use-primer>
+                <magnetos>3</magnetos>
+            </engine>
+        </engines>
+    </controls>
+	
+</PropertyList>
