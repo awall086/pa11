@@ -6,9 +6,7 @@
 
     <params>
         <doors>
-            <right>
-                <property>sim/multiplay/generic/float[0]</property>
-            </right>
+            <right>sim/multiplay/generic/float[0]</right>
         </doors>
 		<windows>
             <right>sim/multiplay/generic/float[1]</right>
@@ -16,6 +14,30 @@
         </windows>
 	</params>
 
+    <!-- Register transparent objects --> 
+    <effect>
+        <inherits-from>Aircraft/pa11/Models/Effects/exterior/exterior-glass-reflection</inherits-from>
+        <object-name>windshield</object-name>
+        <object-name>LglassR</object-name>
+		<object-name>LglassC</object-name>
+        <object-name>LglassF</object-name>
+        <object-name>RglassF</object-name>
+        <object-name>RglassR</object-name>
+        <object-name>roof</object-name>
+    </effect>
+
+    <animation>
+        <type>noshadow</type>
+        <object-name>windshield</object-name>
+        <object-name>LglassR</object-name>
+		<object-name>LglassC</object-name>
+        <object-name>LglassF</object-name>
+        <object-name>RglassF</object-name>
+        <object-name>RglassR</object-name>
+		<object-name>propellerF</object-name>
+		<object-name>propellerR</object-name>
+        <object-name>roof</object-name>
+	</animation>
 
 	<!--		magneto switch		-->
 	 <animation>
@@ -346,6 +368,156 @@
 		</axis>
 	</animation>
 
+	<!-- Left Aileron -->
+	<animation>
+		<type>rotate</type>
+		<object-name>Laileron</object-name>
+		<property>controls/flight/aileron</property>
+		<interpolation>
+			<entry>
+				<ind>-1.0</ind>
+				<dep>-18</dep>
+			</entry>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>18</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m> 2.8231</x1-m>
+			<y1-m>-4.4065</y1-m>
+			<z1-m> 0.77159</z1-m>
+			<x2-m> 2.8231</x2-m>
+			<y2-m>-2.4008</y2-m>
+			<z2-m> 0.71195</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Right Aileron -->
+	<animation>
+		<type>rotate</type>
+		<object-name>Raileron</object-name>
+		<property>controls/flight/aileron</property>
+		<interpolation>
+			<entry>
+				<ind>-1.0</ind>
+				<dep>-18</dep>
+			</entry>
+			<entry>
+				<ind>0.0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>18</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>2.8231</x1-m>
+			<y1-m>4.4195</y1-m>
+			<z1-m>0.79177</z1-m>
+			<x2-m>2.8231</x2-m>
+			<y2-m>2.4072</y2-m>
+			<z2-m>0.72046</z2-m>
+		</axis>
+	</animation>
+	 
+	<!-- Elevator -->
+	<animation>
+		<type>rotate</type>
+		<object-name>elevator</object-name>
+		<property>controls/flight/elevator</property>
+		<interpolation>
+			<entry>
+				<ind>-1.0</ind>
+				<dep>-29</dep>
+			</entry>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>34</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>6.4322</x-m>
+			<y-m>-0.00415</y-m>
+			<z-m>0.29058</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<!-- Elevator Trim --> 
+	<animation>
+		<type>rotate</type>
+		<object-name>HStabilizer</object-name>
+		<property>controls/flight/elevator-trim</property>
+		<interpolation>
+			<entry>
+				<ind>-1.0</ind>
+				<dep>2.5</dep>
+			</entry>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>-4</dep>
+			</entry>
+		</interpolation>
+		<center>
+			<x-m>6.4189</x-m>
+			<y-m>-0.0044</y-m>
+			<z-m>0.29058</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+ 
+	<!-- Rudder --> 
+	<animation>
+		<type>rotate</type>
+		<object-name>rudder</object-name>
+		<property>controls/flight/rudder</property>
+		<interpolation>
+			<entry>
+				<ind>-1.0</ind>
+				<dep>-30</dep>
+			</entry>
+			<entry>
+				<ind>0</ind>
+				<dep>0</dep>
+			</entry>
+			<entry>
+				<ind>1.0</ind>
+				<dep>30</dep>
+			</entry>
+		</interpolation>
+		<axis>
+			<x1-m>6.5152</x1-m>
+			<y1-m>0.0048</y1-m>
+			<z1-m>1.0517</z1-m>
+			<x2-m>6.5138</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>0.0052</z2-m>
+		</axis>
+	</animation>
+
+
 	<!-- Left Main Landing Gear -->
 <!--	<animation>
 		<name>LeftWheelGroup</name>
@@ -440,7 +612,7 @@
         <object-name>RDoor-ext-handle-m</object-name>
         <object-name>RDoor-int-handle</object-name>
                 
-        <property alias="../../params/doors/right/property"/>
+        <property alias="../../params/doors/right"/>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -452,18 +624,16 @@
             </entry>
             <entry>
                 <ind>1</ind>
-                <dep>-170.0</dep>
+                <dep>170.0</dep>
             </entry>
         </interpolation>
-		<center>
-			<x-m>2.0483</x-m>
-			<y-m>0.3892</y-m>
-			<z-m>-0.2166</z-m>
-		</center>
 		<axis>
-			<x>1.0</x>
-			<y>0.0</y>
-			<z>0.0</z>
+			<x1-m>2.41540</x1-m>
+			<y1-m>0.39769</y1-m>
+			<z1-m>-0.21362</z1-m>
+			<x2-m>1.7781</x2-m>
+			<y2-m>0.37762</y2-m>
+			<z2-m>-0.21944</z2-m>
 		</axis>
     </animation>
 
@@ -491,7 +661,7 @@
    <animation>
         <type>rotate</type>
         <object-name>RDoor-ext-handle-m</object-name>                
-        <property alias="../../params/doors/right/property"/>
+        <property alias="../../params/doors/right"/>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -574,7 +744,7 @@
    <animation>
         <type>rotate</type>
         <object-name>RDoor-int-handle</object-name>                
-        <property alias="../../params/doors/right/property"/>
+        <property alias="../../params/doors/right"/>
         <interpolation>
             <entry>
                 <ind>0.0</ind>
@@ -599,6 +769,55 @@
 			<y>1.0</y>
 			<z>0.0</z>
 		</axis>
+    </animation>
+
+    <animation>
+        <type>rotate</type>
+        <object-name>Rwindow</object-name>
+        <object-name>Rwindow-int</object-name>
+        <object-name>RglassF</object-name>
+        <object-name>Rwindow-handle</object-name>
+                
+        <property alias="../../params/windows/right"/>
+        <interpolation>
+            <entry>
+                <ind>0.0</ind>
+                <dep>0.0</dep>
+            </entry>
+            <entry>
+                <ind>1</ind>
+                <dep>-87.0</dep>
+            </entry>
+        </interpolation>
+		<axis>
+			<x1-m>2.61036</x1-m>
+			<y1-m>0.36871</y1-m>
+			<z1-m>0.56840</z1-m>
+			<x2-m>1.6864</x2-m>
+			<y2-m>0.36712</y2-m>
+			<z2-m>0.56840</z2-m>
+		</axis>
+    </animation>
+
+   <animation>
+        <type>pick</type>
+        <object-name>Rwindow-handle</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.rightWindow.toggle();</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>Rwindow-handle-1</tooltip-id>
+                <label>Open/Close Right Window</label>
+            </binding>
+        </hovered>
     </animation>
 
 </PropertyList>
