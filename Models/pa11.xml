@@ -24,6 +24,7 @@
         <object-name>RglassF</object-name>
         <object-name>RglassR</object-name>
         <object-name>roof</object-name>
+        <object-name>roof</object-name>
     </effect>
 
     <animation>
@@ -37,6 +38,7 @@
 		<object-name>propellerF</object-name>
 		<object-name>propellerR</object-name>
         <object-name>roof</object-name>
+        <object-name>glass_turn</object-name>
 	</animation>
 
 	<!--		magneto switch		-->
@@ -296,7 +298,145 @@
 		</axis>
 	</animation>
 
+    <animation>
+        <type>rotate</type>
+        <object-name>Ring</object-name>
+        <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
+        <factor>1</factor>
+		<center>
+			<x-m>1.3175</x-m>
+			<y-m>-0.002</y-m>
+			<z-m>0.1638</z-m>
+		</center>
+		<axis>
+		   <x>0</x>
+		   <y>0</y>
+		   <z>1</z>
+		</axis>
+    </animation>
 
+	 <animation>
+		<type>rotate</type>
+		<object-name>turn_ball</object-name>
+		<property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
+		<factor>20</factor> <!-- ini 5.729 -->
+		<!--
+		   From the source for slip_skid_ball.cxx, the number returned is (-z_accel/y_accel)*10.
+		   For small theta, theta~=tan(theta) when theta is in radians.  So the angle of a "ball" 
+		   undergoing z_accel and y_accel hung on the end of a string makes with the verticle
+		   will be approximately -z_accel/y_accel radians. Converting to degrees, multiply by
+		   180/pi=57.29, or 5.729 times the returned value. Edited by Dave Perry, 2/26/06.
+		   
+		   Edit by Daniel Dubreuil june 2014: I'd rather say
+		   Angle with the verticle (radians) -y_accel/z_accel
+		   FG indicated-slip-skid = -(y_accel/z_accel)*10
+		-->
+		<min-deg>-9.3</min-deg>
+		<max-deg>9.3</max-deg>
+		<center>
+			<x-m>1.3279</x-m>
+			<y-m>-0.004</y-m>
+			<z-m>0.16468</z-m>  <!-- 0.10 is fitted to the drawing. Initial 0.25 makes the radius of curvature for the glass tube ~10 inches and the angle +-4 deg (more sensitive) -->
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	 </animation>
+
+	<!-- Engine Primer -->
+    <animation>
+        <type>pick</type>
+        <object-name>primer</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.pumpPrimer();</script>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.click("primer-in", 1.2)</script>
+            </binding>
+            <binding>
+                <command>nasal</command>
+                <script>pa11.click("primer-out", 1.2)</script>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>primer</tooltip-id>
+                <label>Engine primer (%1d)</label>
+                <property>controls/engines/engine/primer</property>
+            </binding>
+        </hovered>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>primer</object-name>
+        <property>sim/model/pa11/cockpit/primer-lever-animation</property>
+        <factor>0.043</factor>
+		<center>
+			<x-m>1.3570</x-m>
+			<y-m>0.2934</y-m>
+			<z-m>0.1170</z-m>
+		</center>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.10</z>
+        </axis>
+    </animation>
+
+	<!--		Starter		-->
+	<animation>
+		<type>pick</type>
+		<object-name>start_button</object-name>
+		<action>
+			<name>starter</name>
+			<button>0</button>
+			<binding>
+				<command>property-assign</command>
+				<property>controls/switches/starter</property>
+				<value>1</value>
+			</binding>
+			<mod-up>
+				<binding>
+					<command>property-assign</command>
+					<property>controls/switches/starter</property>
+					<value>0</value>
+				</binding>
+			</mod-up> 
+		</action>  
+		<hovered>
+			<binding>
+				<command>set-tooltip</command>
+				<tooltip-id>starter-switch</tooltip-id>
+				<label>Engine Starter</label>
+			</binding>
+		</hovered>
+    </animation>
+    <animation>
+        <type>translate</type>
+        <object-name>start_button</object-name>
+        <property>controls/switches/starter</property>
+        <factor>-0.003</factor>
+		<center>
+			<x-m>1.3508</x-m>
+			<y-m>-0.2897</y-m>
+			<z-m>0.1164</z-m>
+		</center>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.10</z>
+        </axis>
+    </animation>
+	
 	<!-- Propeller -->
 
 	<animation>
@@ -495,7 +635,7 @@
 		<property>controls/flight/rudder</property>
 		<interpolation>
 			<entry>
-				<ind>-1.0</ind>
+				<ind>1.0</ind>
 				<dep>-30</dep>
 			</entry>
 			<entry>
@@ -503,7 +643,7 @@
 				<dep>0</dep>
 			</entry>
 			<entry>
-				<ind>1.0</ind>
+				<ind>-1.0</ind>
 				<dep>30</dep>
 			</entry>
 		</interpolation>

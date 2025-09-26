@@ -118,6 +118,7 @@
         <pa11>
             <file>Nasal/pa11.nas</file>
 			<file>Nasal/doors.nas</file>
+			<file>Nasal/engine.nas</file>
         </pa11>
 
 		<acconfig>
@@ -155,6 +156,12 @@
                 <magnetos>3</magnetos>
             </engine>
         </engines>
+
+		<switches>
+            <master-bat type="bool">true</master-bat>
+            <magnetos type="double">0</magnetos>
+			<starter type="bool">false</starter>
+		</switches>
     </controls>
 	
 </PropertyList>
