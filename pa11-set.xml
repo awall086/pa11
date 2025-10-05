@@ -35,6 +35,25 @@
 
         <model>
             <path archive="y">Aircraft/pa11/Models/pa11.xml</path>  
+
+            <crew>
+                <pilot n="0">
+                    <pose include="Models/Human/pose-pilot.xml"/>
+                    <character>0</character>
+                    <outfit>0</outfit>
+                    <equipment>0</equipment>
+                </pilot>
+                <pilot n="1">
+                    <pose include="Models/Human/pose-copilot.xml"/>
+                    <character>0</character>
+                    <outfit>0</outfit>
+                    <equipment>0</equipment>
+                </pilot>
+            </crew> 
+
+            <!-- Human models persistent menu choice -->
+            <occupants type="bool">true</occupants>
+			
 		</model>
 		
 		<gui n="0" include="gui/pa11-gui.xml"/>
@@ -48,7 +67,7 @@
             <config>
                 <x-offset-m archive="y" type="double"> 0.00</x-offset-m>
                 <y-offset-m archive="y" type="double">0.500</y-offset-m>
-                <z-offset-m archive="y" type="double"> 2.00</z-offset-m>
+                <z-offset-m archive="y" type="double"> 0.56792</z-offset-m>
                 <pitch-offset-deg type="double">-11.5</pitch-offset-deg>
                 <default-field-of-view-deg>75</default-field-of-view-deg>
             </config>
@@ -82,7 +101,11 @@
             <property-rule n="101">
                 <path>Aircraft/pa11/Systems/ground-effects.xml</path>
             </property-rule>
-        </systems>
+            <property-rule n="102">
+                <path>Systems/pax.xml</path>
+            </property-rule> 
+		</systems>
+
 
         <multiplay>
             <generic>

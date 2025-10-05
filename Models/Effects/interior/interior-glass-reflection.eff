@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PropertyList>
+    <name>Effects/interior-glass-reflection</name>
+    <inherits-from>Effects/glass</inherits-from>
+    <parameters>
+		<use-reflection-lightmap type="int">1</use-reflection-lightmap>
+    </parameters>
+</PropertyList>

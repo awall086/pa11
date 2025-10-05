@@ -4,6 +4,34 @@
 
     <path>pa11.ac</path>
 
+    <nasal>
+
+       <load>
+            var rplayer = cmdarg();
+
+            # Passengers
+            var pax_state_path = rplayer.getNode("sim/multiplay/generic/int[16]").getPath();
+
+            var pilot = rplayer.initNode("pax/pilot/present", 0, "BOOL");
+			var co_pilot = rplayer.initNode("pax/co-pilot/present", 0, "BOOL");
+            
+            setlistener(pax_state_path, func (node) {
+                var state = node.getValue();
+                pilot.setBoolValue(bits.test(state, 0));
+                co_pilot.setBoolValue(bits.test(state, 1));
+            }, 1, 0);
+
+            var livery_update = aircraft.livery_update.new(
+            "Aircraft/pa11/Models/Liveries", 10,
+            func { print("pa11 livery update") });
+        </load>
+
+        <unload>
+            livery_update.stop();
+        </unload> 
+
+    </nasal>
+
     <params>
         <doors>
             <right>sim/multiplay/generic/float[0]</right>
@@ -24,8 +52,20 @@
         <object-name>RglassF</object-name>
         <object-name>RglassR</object-name>
         <object-name>roof</object-name>
-        <object-name>roof</object-name>
     </effect>
+
+    <!-- Register transparent objects --> 
+    <effect>
+        <inherits-from>Aircraft/pa11/Models/Effects/interior/interior-glass-reflection</inherits-from>
+        <object-name>windshield_int</object-name>
+        <object-name>LglassR_int</object-name>
+		<object-name>LglassC_int</object-name>
+        <object-name>LglassF_int</object-name>
+        <object-name>RglassF_int</object-name>
+        <object-name>RglassR_int</object-name>
+        <object-name>roof_int</object-name>
+        <object-name>glass_turn</object-name> 
+ </effect>
 
     <animation>
         <type>noshadow</type>
@@ -35,9 +75,16 @@
         <object-name>LglassF</object-name>
         <object-name>RglassF</object-name>
         <object-name>RglassR</object-name>
+        <object-name>roof</object-name>
+        <object-name>windshield_int</object-name>
+        <object-name>LglassR_int</object-name>
+		<object-name>LglassC_int</object-name>
+        <object-name>LglassF_int</object-name>
+        <object-name>RglassF_int</object-name>
+        <object-name>RglassR_int</object-name>
+        <object-name>roof_int</object-name>
 		<object-name>propellerF</object-name>
 		<object-name>propellerR</object-name>
-        <object-name>roof</object-name>
         <object-name>glass_turn</object-name>
 	</animation>
 
@@ -90,7 +137,7 @@
 		<object-name>RLgear6</object-name>
     </effect>
 
-	<!--		magneto switch		-->
+	<!--		magneto switch	-->	
 	 <animation>
 		<type>knob</type>
 		<object-name>Magneto</object-name>
@@ -139,7 +186,7 @@
 		<property>/controls/switches/magnetos</property>
 		<factor>30</factor>
 		<center>
-			<x-m>1.88329</x-m>
+			<x-m> 0.41825</x-m>
 			<y-m>-0.350494</y-m>
 			<z-m>-0.01125</z-m>
 		</center>
@@ -150,7 +197,7 @@
 		</axis>
 	</animation>
 
-	<!--	fuel valve		-->
+	<!-- fuel valve	-->
 	<animation>
 		<type>rotate</type>
 		<object-name>fuel-valve</object-name>
@@ -162,7 +209,7 @@
 			<z>0.0</z>
 		</axis>
 		<center>
-			<x-m>1.57576</x-m>
+			<x-m> 0.11072</x-m>
 			<y-m>-0.330053</y-m>
 			<z-m>-0.101746</z-m>
 		</center>
@@ -190,6 +237,7 @@
 	   </hovered>
 	</animation>        
 
+	<!-- Engine RPM -->
 	<animation> 
 		<type>rotate</type>
 		<object-name>needle_rpm</object-name>
@@ -210,7 +258,7 @@
 			<z>0.15</z>
 		</axis>
 		<center>
-			<x-m>1.3351</x-m>
+			<x-m>-0.12994</x-m>
 			<y-m>-0.2219</y-m>
 			<z-m>0.1654</z-m>   
 		</center>
@@ -238,12 +286,11 @@
 			<z>-0.15</z>
 		</axis>
 		<center>
-			<x-m>1.3371</x-m>
+			<x-m>-0.12994</x-m>
 			<y-m>-0.1089</y-m>
 			<z-m>0.1656</z-m>   
 		</center>
 	</animation>
-
 
 	<!-- Altimeter -->
 	<animation>
@@ -257,7 +304,7 @@
 			<z>-0.15</z>
 		</axis>
 		<center>
-			<x-m>1.3356</x-m>
+			<x-m>-0.12944</x-m>
 			<y-m>0.1019</y-m>
 			<z-m>0.1653</z-m>  
 		</center>
@@ -273,7 +320,7 @@
 			<z>0</z>
 		</axis>
 		<center>
-			<x-m>1.3487</x-m>
+			<x-m>-0.11634</x-m>
 			<y-m>0.1002</y-m>
 			<z-m>0.1145</z-m>
 		</center>
@@ -297,6 +344,7 @@
 		</hovered>
 	</animation>
 
+	<!-- Engine Oil Temperature -->
 	<animation>
 		<type>rotate</type>
 		<object-name>needle_oil_temp</object-name>
@@ -313,7 +361,7 @@
 			<entry><ind>240</ind><dep>50.59</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>1.3303</x-m>
+			<x-m>-0.13474</x-m>
 			<y-m>0.2223</y-m>
 			<z-m>0.2026</z-m>
 		</center>
@@ -324,6 +372,7 @@
 		</axis>
 	</animation>
 
+	<!-- Engine Oil Pressure -->
 	<animation>
 		<type>rotate</type>
 		<object-name>needle_oil_press</object-name>
@@ -336,7 +385,7 @@
 			<entry><ind>100</ind><dep>59.00</dep></entry>
 		</interpolation>
 		<center>
-			<x-m>1.3390</x-m>
+			<x-m>-0.12604</x-m>
 			<y-m>0.2223</y-m>
 			<z-m>0.1290</z-m>
 		</center>
@@ -347,13 +396,14 @@
 		</axis>
 	</animation>
 
+	<!-- Magnetic Compass -->
     <animation>
         <type>rotate</type>
         <object-name>Ring</object-name>
         <property>/instrumentation/magnetic-compass/indicated-heading-deg</property>
         <factor>1</factor>
 		<center>
-			<x-m>1.3175</x-m>
+			<x-m>-0.14754</x-m>
 			<y-m>-0.002</y-m>
 			<z-m>0.1638</z-m>
 		</center>
@@ -364,42 +414,31 @@
 		</axis>
     </animation>
 
-	 <animation>
+	<!-- Turn Slip indicator -->
+	<animation>
 		<type>rotate</type>
 		<object-name>turn_ball</object-name>
 		<property>/instrumentation/slip-skid-ball/indicated-slip-skid</property>
-		<factor>20</factor> <!-- ini 5.729 -->
-		<!--
-		   From the source for slip_skid_ball.cxx, the number returned is (-z_accel/y_accel)*10.
-		   For small theta, theta~=tan(theta) when theta is in radians.  So the angle of a "ball" 
-		   undergoing z_accel and y_accel hung on the end of a string makes with the verticle
-		   will be approximately -z_accel/y_accel radians. Converting to degrees, multiply by
-		   180/pi=57.29, or 5.729 times the returned value. Edited by Dave Perry, 2/26/06.
-		   
-		   Edit by Daniel Dubreuil june 2014: I'd rather say
-		   Angle with the verticle (radians) -y_accel/z_accel
-		   FG indicated-slip-skid = -(y_accel/z_accel)*10
-		-->
+		<factor>20</factor> 
 		<min-deg>-9.3</min-deg>
 		<max-deg>9.3</max-deg>
 		<center>
-			<x-m>1.3279</x-m>
+			<x-m>-0.13714</x-m>
 			<y-m>-0.004</y-m>
-			<z-m>0.16468</z-m>  <!-- 0.10 is fitted to the drawing. Initial 0.25 makes the radius of curvature for the glass tube ~10 inches and the angle +-4 deg (more sensitive) -->
+			<z-m>0.16468</z-m> 
 		</center>
 		<axis>
 			<x>-1</x>
 			<y>0</y>
 			<z>0</z>
 		</axis>
-	 </animation>
+	</animation>
 
 	<!-- Fuel Indicator -->
 	 <animation>
 		<type>textranslate</type>
 		<object-name>Fuel_ind</object-name>
 		<property>consumables/fuel/tank[1]/level-gal_us</property>
-		<!--<bias>0.0001</bias> -->
 		<factor>0.03</factor>
 		<step>0.01</step>
 		<axis>
@@ -407,7 +446,6 @@
 			<y>-1</y>
 		</axis>
 	 </animation>
-
 
 	<!-- Engine Primer -->
     <animation>
@@ -445,7 +483,7 @@
         <property>sim/model/pa11/cockpit/primer-lever-animation</property>
         <factor>0.043</factor>
 		<center>
-			<x-m>1.3570</x-m>
+			<x-m>-0.10804</x-m>
 			<y-m>0.2934</y-m>
 			<z-m>0.1170</z-m>
 		</center>
@@ -490,7 +528,7 @@
         <property>controls/switches/starter</property>
         <factor>-0.003</factor>
 		<center>
-			<x-m>1.3508</x-m>
+			<x-m>-0.11496</x-m>
 			<y-m>-0.2897</y-m>
 			<z-m>0.1164</z-m>
 		</center>
@@ -501,6 +539,116 @@
         </axis>
     </animation>
 
+	<!-- Carb Heat -->
+    <animation>
+        <type>rotate</type>
+        <object-name>CarbHeat</object-name>
+        <object-name>CarbHeat1</object-name>
+        <property>/controls/anti-ice/engine/carb-heat</property>
+        <factor>-60</factor>
+		<center>
+			<x-m>0.32416</x-m>
+			<y-m>-0.3628</y-m>
+			<z-m>0.0353</z-m>
+		</center>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+    </animation>
+    <animation>
+        <type>pick</type>
+        <object-name>CarbHeat</object-name>
+        <visible>true</visible>
+        <action>
+            <button>0</button>
+            <repeatable>false</repeatable>
+            <binding>
+                <command>property-toggle</command>
+                <property>/controls/anti-ice/engine/carb-heat</property>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>carburetor-heat</tooltip-id>
+                <label>Carburetor: %s</label>
+                <mapping>nasal</mapping>
+                <property>/controls/anti-ice/engine/carb-heat</property>
+                <script>
+                    var modes = ['COLD', 'HEATED'];
+                    return modes[arg[0]];
+                </script>
+            </binding>
+        </hovered>
+    </animation>
+
+	<!-- Trim Handle -->
+	<animation>
+		<name>TrimGroup</name>
+		<object-name>Trim_handle</object-name>
+		<object-name>Trim_handle1</object-name>
+	</animation>
+
+    <animation>
+        <type>knob</type>
+        <object-name>TrimGroup</object-name>
+        <property>controls/flight/elevator-trim</property>
+        <drag-direction>vertical</drag-direction>
+        <factor>-360</factor>
+        <center>
+			<x-m>  0.3771</x-m>
+			<y-m> -0.3356</y-m>
+			<z-m>-0.16405</z-m>
+        </center>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <action>
+            <binding>
+                <command>property-adjust</command>
+                <property>controls/flight/elevator-trim</property>
+                <factor>0.01</factor>
+                <min>-1</min>
+                <max>1</max>
+                <wrap>0</wrap>
+            </binding>
+        </action>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <label>Elevator trim: %3f</label>
+                <tooltip-id>pitch-trim</tooltip-id>
+                <property>controls/flight/elevator-trim</property>
+            </binding>
+        </hovered>
+    </animation>
+
+	<!-- Trim indicator -->
+   <animation>
+        <type>translate</type>
+        <object-name>Trim_ind</object-name>
+        <property>controls/flight/elevator-trim</property>
+		<interpolation>
+			<entry><ind>-1</ind><dep>-0.045</dep></entry>
+			<entry><ind> 0</ind><dep>  0.00</dep></entry>
+			<entry><ind> 1</ind><dep> 0.045</dep></entry>
+		</interpolation>
+		<center>
+			<x-m> 0.37773</x-m>
+			<y-m>-0.34300</y-m>
+			<z-m>-0.11943</z-m>
+		</center>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+	
 	<!-- Throttle Pilot -->
     <animation>
         <type>rotate</type>
@@ -509,7 +657,7 @@
         <property>controls/engines/engine[0]/throttle</property>
         <factor>-90</factor>
 		<center>
-			<x-m>1.6361</x-m>
+			<x-m>0.17106</x-m>
 			<y-m>-0.3291</y-m>
 			<z-m>0.1021</z-m>
 		</center>
@@ -554,7 +702,7 @@
         <property>controls/engines/engine[0]/throttle</property>
         <factor>-90</factor>
 		<center>
-			<x-m>2.4574</x-m>
+			<x-m>0.99236</x-m>
 			<y-m>-0.3438</y-m>
 			<z-m>0.1052</z-m>
 		</center>
@@ -589,7 +737,7 @@
                 <property>controls/engines/engine[0]/throttle</property>
             </binding>
         </hovered>
-    </animation>
+    </animation> -->
 	
 	<!-- Propeller -->
 
@@ -682,10 +830,10 @@
 			</entry>
 		</interpolation>
 		<axis>
-			<x1-m> 2.8231</x1-m>
+			<x1-m> 1.35806</x1-m>
 			<y1-m>-4.4065</y1-m>
 			<z1-m> 0.77159</z1-m>
-			<x2-m> 2.8231</x2-m>
+			<x2-m> 1.35806</x2-m>
 			<y2-m>-2.4008</y2-m>
 			<z2-m> 0.71195</z2-m>
 		</axis>
@@ -711,14 +859,40 @@
 			</entry>
 		</interpolation>
 		<axis>
-			<x1-m>2.8231</x1-m>
+			<x1-m> 1.35806</x1-m>
 			<y1-m>4.4195</y1-m>
 			<z1-m>0.79177</z1-m>
-			<x2-m>2.8231</x2-m>
+			<x2-m> 1.35806</x2-m>
 			<y2-m>2.4072</y2-m>
 			<z2-m>0.72046</z2-m>
 		</axis>
 	</animation>
+
+   <animation>
+        <type>translate</type>
+        <object-name>LAil_pushrod</object-name>
+        <object-name>LAil_pushrod_hook</object-name>
+        <object-name>RAil_pushrod</object-name>
+        <object-name>RAil_pushrod_hook</object-name>
+        <object-name>Ail_pushrod_supp</object-name>		
+		
+        <property>controls/flight/aileron</property>
+		<interpolation>
+			<entry><ind>-1</ind><dep>-0.10</dep></entry>
+			<entry><ind> 0</ind><dep>  0.00</dep></entry>
+			<entry><ind> 1</ind><dep> 0.10</dep></entry>
+		</interpolation>
+<!--		<center>
+			<x-m> 0.37773</x-m>
+			<y-m>-0.34300</y-m>
+			<z-m>-0.11943</z-m>
+		</center> -->
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
 	 
 	<!-- Elevator -->
 	<animation>
@@ -740,7 +914,7 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>6.4322</x-m>
+			<x-m>4.96716</x-m>
 			<y-m>-0.00415</y-m>
 			<z-m>0.29058</z-m>
 		</center>
@@ -751,7 +925,7 @@
 		</axis>
 	</animation>
 
-	<!-- Elevator Trim --> 
+	<!-- Elevator Trim -->
 	<animation>
 		<type>rotate</type>
 		<object-name>HStabilizer</object-name>
@@ -771,7 +945,7 @@
 			</entry>
 		</interpolation>
 		<center>
-			<x-m>6.4189</x-m>
+			<x-m>4.95386</x-m>
 			<y-m>-0.0044</y-m>
 			<z-m>0.29058</z-m>
 		</center>
@@ -782,7 +956,7 @@
 		</axis>
 	</animation>
  
-	<!-- Rudder --> 
+	<!-- Rudder -->
 	<animation>
 		<type>rotate</type>
 		<object-name>rudder</object-name>
@@ -802,10 +976,10 @@
 			</entry>
 		</interpolation>
 		<axis>
-			<x1-m>6.5152</x1-m>
+			<x1-m>5.05016</x1-m>
 			<y1-m>0.0048</y1-m>
 			<z1-m>1.0517</z1-m>
-			<x2-m>6.5138</x2-m>
+			<x2-m>5.04876</x2-m>
 			<y2-m>0.0</y2-m>
 			<z2-m>0.0052</z2-m>
 		</axis>
@@ -832,7 +1006,7 @@
 		<property>gear/gear[0]/rollspeed-ms</property>
 		<factor>47.74</factor>
 		<center>
-			<x-m>1.62784</x-m>
+			<x-m>0.1628</x-m>
 			<y-m>-0.9811</y-m>
 			<z-m>-1.2505</z-m>
 		</center>
@@ -849,10 +1023,10 @@
 		<property>gear/gear[0]/compression-norm</property>
 		<factor>-10.0</factor>
 		<axis>
-			<x1-m>1.6393</x1-m>
+			<x1-m>0.17426</x1-m>
 			<y1-m>-0.3621</y1-m>
 			<z1-m>-0.6162</z1-m>
-			<x2-m>2.1022</x2-m>
+			<x2-m>0.63716</x2-m>
 			<y2-m>-0.36214</y2-m>
 			<z2-m>-0.6162</z2-m>
 		</axis>
@@ -864,7 +1038,7 @@
 		<property>gear/gear[0]/compression-norm</property>
 		<factor>5.0</factor>
 		<center>
-			<x-m>1.6815</x-m>
+			<x-m>0.21646</x-m>
 			<y-m>-0.7625</y-m>
 			<z-m>-1.2496</z-m>
 		</center>
@@ -882,7 +1056,7 @@
 		<property>gear/gear[0]/compression-norm</property>
 		<factor>-10.0</factor>
 		<center>
-			<x-m>1.6630</x-m>
+			<x-m>0.19796</x-m>
 			<y-m>-0.03632</y-m>
 			<z-m>-0.9237</z-m>
 		</center>
@@ -894,7 +1068,6 @@
 	</animation>
 
 	<!-- Right Main Landing Gear -->
-
 	<animation>
 		<name>RightWheelGroup</name>
 		<object-name>Right_Wheel</object-name>
@@ -914,7 +1087,7 @@
 		<property>gear/gear[1]/rollspeed-ms</property>
 		<factor>47.74</factor>
 		<center>
-			<x-m>1.62784</x-m>
+			<x-m>0.1628</x-m>
 			<y-m>0.96328</y-m>
 			<z-m>-1.2505</z-m>
 		</center>
@@ -931,10 +1104,10 @@
 		<property>gear/gear[1]/compression-norm</property>
 		<factor>10.0</factor>
 		<axis>
-			<x1-m>1.6393</x1-m>
+			<x1-m>0.17426</x1-m>
 			<y1-m>0.35838</y1-m>
 			<z1-m>-0.6150</z1-m>
-			<x2-m>2.1022</x2-m>
+			<x2-m>0.63716</x2-m>
 			<y2-m>0.35838</y2-m>
 			<z2-m>-0.61506</z2-m>
 		</axis>
@@ -946,7 +1119,7 @@
 		<property>gear/gear[1]/compression-norm</property>
 		<factor>-5.0</factor>
 		<center>
-			<x-m>1.6815</x-m>
+			<x-m>0.21646</x-m>
 			<y-m>0.73598</y-m>
 			<z-m>-1.2496</z-m>
 		</center>
@@ -964,7 +1137,7 @@
 		<property>gear/gear[1]/compression-norm</property>
 		<factor>10.0</factor>
 		<center>
-			<x-m>1.6630</x-m>
+			<x-m>0.19796</x-m>
 			<y-m>0.03891</y-m>
 			<z-m>-0.9237</z-m>
 		</center>
@@ -976,7 +1149,6 @@
 	</animation>
 
 	<!-- Tail Landing Gear -->
-
 	<animation>
 		<name>TailWheelGroup</name>
 		<object-name>Tail_Wheel</object-name>
@@ -1000,7 +1172,7 @@
 		<property>gear/gear[2]/compression-norm</property>
 		<factor>-20.0</factor>
 		<center>
-			<x-m>6.4206</x-m>
+			<x-m>4.95556</x-m>
 			<y-m>-0.00616</y-m>
 			<z-m>-0.00483</z-m>
 		</center>
@@ -1017,7 +1189,7 @@
 		<property>gear/gear[2]/rollspeed-ms</property>
 		<factor>59.6</factor>
 		<center>
-			<x-m>6.7524</x-m>
+			<x-m>5.28736</x-m>
 			<y-m>-0.002</y-m>
 			<z-m>-0.1758</z-m>
 		</center>
@@ -1054,14 +1226,13 @@
 			<z>1</z>
 		</axis>
 		<center>
-			<x-m>6.6863</x-m>
+			<x-m>5.22126</x-m>
 			<y-m>-0.0013</y-m>
 			<z-m>-0.0773</z-m>
 		</center>
 	</animation>
 
 	<!-- Right Door -->
-
     <animation>
         <type>rotate</type>
         <object-name>RDoor</object-name>
@@ -1085,10 +1256,10 @@
             </entry>
         </interpolation>
 		<axis>
-			<x1-m>2.41540</x1-m>
+			<x1-m>0.95036</x1-m>
 			<y1-m>0.39769</y1-m>
 			<z1-m>-0.21362</z1-m>
-			<x2-m>1.7781</x2-m>
+			<x2-m>0.31306</x2-m>
 			<y2-m>0.37762</y2-m>
 			<z2-m>-0.21944</z2-m>
 		</axis>
@@ -1136,7 +1307,7 @@
             </entry>
         </interpolation>
 		<center>
-			<x-m>2.0183</x-m>
+			<x-m>0.55326</x-m>
 			<y-m>0.3978</y-m>
 			<z-m>0.1003</z-m>
 		</center>
@@ -1215,7 +1386,7 @@
             </entry>
         </interpolation>
 		<center>
-			<x-m>2.0183</x-m>
+			<x-m>0.55326</x-m>
 			<y-m>0.3391</y-m>
 			<z-m>0.1006</z-m>
 		</center>
@@ -1231,6 +1402,7 @@
         <object-name>Rwindow</object-name>
         <object-name>Rwindow-int</object-name>
         <object-name>RglassF</object-name>
+        <object-name>RglassF_int</object-name>
         <object-name>Rwindow-handle</object-name>
                 
         <property alias="../../params/windows/right"/>
@@ -1245,10 +1417,10 @@
             </entry>
         </interpolation>
 		<axis>
-			<x1-m>2.61036</x1-m>
+			<x1-m>1.14856</x1-m>
 			<y1-m>0.36871</y1-m>
 			<z1-m>0.56840</z1-m>
-			<x2-m>1.6864</x2-m>
+			<x2-m>0.22136</x2-m>
 			<y2-m>0.36712</y2-m>
 			<z2-m>0.56840</z2-m>
 		</axis>
@@ -1280,10 +1452,11 @@
         <object-name>Lwindow1</object-name>
         <object-name>Lwindow2</object-name>
         <object-name>LglassC</object-name>               
+        <object-name>LglassC_int</object-name> 
         <property>/sim/multiplay/generic/left_window</property>
         <factor>-0.38</factor>
 		<center>
-			<x-m>1.3570</x-m>
+			<x-m>-0.10804</x-m>
 			<y-m>0.2934</y-m>
 			<z-m>0.1170</z-m>
 		</center>
@@ -1321,4 +1494,78 @@
         </hovered>
     </animation>
 
+    <!-- Pilot and co-pilot -->
+    <model>
+        <name>Pilot</name>
+        <path>Human/female-pilot.xml</path>
+        <offsets>
+            <x-m> 0.5223 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m>-1.21 </z-m>
+        </offsets>
+    </model>
+    <model>
+        <name>Copilot</name>
+        <path>Human/male-copilot.xml</path>
+        <offsets>
+            <x-m> 1.3119 </x-m>
+            <y-m> 0.0 </y-m>
+            <z-m>-1.21 </z-m>
+        </offsets>
+    </model>
+
+    <!-- Pilot visible only when not in the cockpit, the walker is not activated and if there is enough weight on his seat -->
+    <animation>
+        <type>select</type>
+        <object-name>Pilot</object-name>
+        <condition>
+            <and>
+                <!-- Note: the sim/ properties do NOT start with a /,
+                     which means that FlightGear tries to find them in
+                     either:
+
+                        (a) the root (/) for the local aircraft, or:
+                        (b) in /ai/models/multiplayer[i]
+
+                     In the case of (b), the properties do not exist, thus
+                     the <not-equals> gets evaluated to true (always), which
+                     is what we want, but this behavior is error-prone.
+                -->
+                <not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>Cockpit View</value>
+                </not-equals>
+                <not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>IFR Training View</value>
+                </not-equals>
+                <not>
+                    <property>sim/walker/outside</property>
+                </not>
+                <property>pax/pilot/present</property>
+                <property>sim/model/occupants</property>
+            </and>
+        </condition>
+    </animation>
+
+    <!-- Co-pilot not visible if not enough weight on his seat or if using Cockpit Right Seat View-->
+    <animation>
+        <type>select</type>
+        <object-name>Copilot</object-name>
+        <condition>
+            <and>
+                <not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>Cockpit View</value>
+                </not-equals> 
+				<not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>Cockpit Right Seat View</value>
+                </not-equals>
+                <property>pax/co-pilot/present</property>
+                <property>sim/model/occupants</property>
+            </and>
+        </condition>
+    </animation>
+	
 </PropertyList>
