@@ -137,7 +137,7 @@
                 <name type="string">Left Wing</name>
                 <capacity-gal_us type="double">17.0</capacity-gal_us>
                 <unusable-gal_us type="double">0.60</unusable-gal_us>
-                <level-gal_us type="double">17.0</level-gal_us>
+                <level-gal_us type="double"> 8.5</level-gal_us>
             </tank>
         </fuel>
     </consumables>

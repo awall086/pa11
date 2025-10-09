@@ -737,7 +737,346 @@
                 <property>controls/engines/engine[0]/throttle</property>
             </binding>
         </hovered>
-    </animation> -->
+    </animation>
+
+	<!-- Pilot command stick -->
+	<animation>
+		<name>PilotCommandStick</name>
+		<object-name>pilot_stick</object-name>
+		<object-name>sticks_command1</object-name>
+		<object-name>sticks_command_screw1</object-name>
+		<object-name>sticks_command_screw2</object-name>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>PilotCommandStick</object-name>
+		<property>controls/flight/aileron</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0.10491</x-m>
+			<y-m>-0.0018</y-m>
+			<z-m>-0.39264</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>pilot_stick</object-name>
+		<property>controls/flight/elevator</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0.10491</x-m>
+			<y-m>-0.0018</y-m>
+			<z-m>-0.39264</z-m>
+		</center>
+	</animation>
+
+	<!-- Coilot command stick -->
+	<animation>
+		<name>CopilotCommandStick</name>
+		<object-name>copilot_stick</object-name>
+		<object-name>sticks_command5</object-name>
+		<object-name>sticks_command_screw3</object-name>
+		<object-name>sticks_command_screw4</object-name>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>CopilotCommandStick</object-name>
+		<property>controls/flight/aileron</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0.92926</x-m>
+			<y-m>-0.0008</y-m>
+			<z-m>-0.39264</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>copilot_stick</object-name>
+		<property>controls/flight/elevator</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0.92926</x-m>
+			<y-m>-0.0008</y-m>
+			<z-m>-0.39264</z-m>
+		</center>
+	</animation>
+	
+	<!-- Pilot Pedals -->
+	<animation>
+		<name>PilotLeftPedal</name>
+		<object-name>Lpilot_pedal</object-name>
+		<object-name>Lpilot_pedal1</object-name>
+		<object-name>Lpilot_pedal2</object-name>
+		<object-name>Lpilot_pedal_bolt</object-name>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>PilotLeftPedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-0.40983</x-m>
+			<y-m>-0.1861</y-m>
+			<z-m>-0.42081</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Lpilot_pedal2</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-0.40983</x-m>
+			<y-m>-0.26181</y-m>
+			<z-m>-0.26735</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>PilotRightPedal</name>
+		<object-name>Rpilot_pedal</object-name>
+		<object-name>Rpilot_pedal1</object-name>
+		<object-name>Rpilot_pedal2</object-name>
+		<object-name>Rpilot_pedal_bolt</object-name>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>PilotRightPedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-0.40983</x-m>
+			<y-m> 0.18315</y-m>
+			<z-m>-0.42107</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Rpilot_pedal2</object-name>
+		<property>controls/flight/rudder</property>
+		<factor> 20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>-0.40983</x-m>
+			<y-m> 0.25611</y-m>
+			<z-m>-0.26735</z-m>
+		</center>
+	</animation>
+
+   <animation>
+        <type>translate</type>
+        <object-name>Lpushrod1</object-name>
+        <object-name>Lpushrod1_hook1</object-name>
+        <object-name>Lpushrod1_hook2</object-name>
+        <object-name>Lpushrod2</object-name>
+        <object-name>Lpushrod2_hook1</object-name>		
+		
+        <property>controls/flight/rudder</property>
+		<interpolation>
+			<entry><ind>-1</ind><dep>-0.05</dep></entry>
+			<entry><ind> 0</ind><dep>  0.00</dep></entry>
+			<entry><ind> 1</ind><dep> 0.05</dep></entry>
+		</interpolation>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+   <animation>
+        <type>translate</type>
+        <object-name>Lpushrod1</object-name>
+        <object-name>Lpushrod1_hook1</object-name>
+        <object-name>Lpushrod1_hook2</object-name>
+        <object-name>Lpushrod2</object-name>
+        <object-name>Lpushrod2_hook1</object-name>		
+		
+        <property>controls/flight/rudder</property>
+		<interpolation>
+			<entry><ind>-1</ind><dep>-0.01</dep></entry>
+			<entry><ind> 0</ind><dep> 0.00</dep></entry>
+			<entry><ind> 1</ind><dep>-0.01</dep></entry>
+		</interpolation>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+    </animation>
+	
+	
+	<!-- Copilot Pedals -->
+	<animation>
+		<name>CopilotLeftPedal</name>
+		<object-name>Lcopilot_pedal</object-name>
+		<object-name>Lcopilot_pedal1</object-name>
+		<object-name>Lcopilot_pedal2</object-name>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>CopilotLeftPedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m>0.3948</x-m>
+			<y-m>-0.2427</y-m>
+			<z-m>-0.42222</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Lcopilot_pedal2</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m> 0.3948</x-m>
+			<y-m>-0.28872</y-m>
+			<z-m>-0.26735</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<name>CopilotRightPedal</name>
+		<object-name>Rcopilot_pedal</object-name>
+		<object-name>Rcopilot_pedal1</object-name>
+		<object-name>Rcopilot_pedal2</object-name>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>CopilotRightPedal</object-name>
+		<property>controls/flight/rudder</property>
+		<factor>-20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m> 0.39480</x-m>
+			<y-m> 0.2814</y-m>
+			<z-m>-0.42222</z-m>
+		</center>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>Rcopilot_pedal2</object-name>
+		<property>controls/flight/rudder</property>
+		<factor> 20.0</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+		<center>
+			<x-m> 0.3948</x-m>
+			<y-m> 0.32868</y-m>
+			<z-m>-0.26735</z-m>
+		</center>
+	</animation>
+	
+   <animation>
+        <type>translate</type>
+        <object-name>Rpushrod1</object-name>
+        <object-name>Rpushrod1_hook1</object-name>
+        <object-name>Rpushrod1_hook2</object-name>
+        <object-name>Rpushrod2</object-name>
+        <object-name>Rpushrod2_hook1</object-name>		
+		
+        <property>controls/flight/rudder</property>
+		<interpolation>
+			<entry><ind>-1</ind><dep> 0.05</dep></entry>
+			<entry><ind> 0</ind><dep>  0.00</dep></entry>
+			<entry><ind> 1</ind><dep>-0.05</dep></entry>
+		</interpolation>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+
+   <animation>
+        <type>translate</type>
+        <object-name>Rpushrod1</object-name>
+        <object-name>Rpushrod1_hook1</object-name>
+        <object-name>Rpushrod1_hook2</object-name>
+        <object-name>Rpushrod2</object-name>
+        <object-name>Rpushrod2_hook1</object-name>		
+		
+        <property>controls/flight/rudder</property>
+		<interpolation>
+			<entry><ind>-1</ind><dep>-0.01</dep></entry>
+			<entry><ind> 0</ind><dep> 0.00</dep></entry>
+			<entry><ind> 1</ind><dep>-0.01</dep></entry>
+		</interpolation>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+    </animation>
 	
 	<!-- Propeller -->
 
@@ -964,7 +1303,7 @@
 		<interpolation>
 			<entry>
 				<ind>1.0</ind>
-				<dep>30</dep>
+				<dep>-30</dep>
 			</entry>
 			<entry>
 				<ind>0</ind>
@@ -972,7 +1311,7 @@
 			</entry>
 			<entry>
 				<ind>-1.0</ind>
-				<dep>-30</dep>
+				<dep>30</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -1209,7 +1548,7 @@
 		<interpolation>
 			<entry>
 				<ind>1.0</ind>
-				<dep>-30</dep>
+				<dep>30</dep>
 			</entry>
 			<entry>
 				<ind>0</ind>
@@ -1217,7 +1556,7 @@
 			</entry>
 			<entry>
 				<ind>-1.0</ind>
-				<dep>30</dep>
+				<dep>-30</dep>
 			</entry>
 		</interpolation>
 		<axis>
@@ -1450,7 +1789,8 @@
     <animation>
         <type>translate</type>
         <object-name>Lwindow1</object-name>
-        <object-name>Lwindow2</object-name>
+        <object-name>Lwindow2</object-name>        
+		<object-name>Lwindow-handle</object-name>
         <object-name>LglassC</object-name>               
         <object-name>LglassC_int</object-name> 
         <property>/sim/multiplay/generic/left_window</property>
@@ -1469,7 +1809,7 @@
 
     <animation>
         <type>slider</type>
-        <object-name>Lwindow2</object-name>
+        <object-name>Lwindow-handle</object-name>
         <visible>true</visible>
         <drag-direction>vertical</drag-direction>
         <action>

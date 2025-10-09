@@ -76,7 +76,7 @@
      <z> -23.99 </z>
    </location>
         <pointmass name="Front seat">
-            <weight unit="LBS"> 155 </weight>
+            <weight unit="LBS"> 160 </weight>
             <location name="POINTMASS" unit="IN">
                 <x>   6.31 </x>
                 <y>   0.00 </y>
@@ -84,7 +84,7 @@
             </location>
         </pointmass>
         <pointmass name="Back seat">
-            <weight unit="LBS"> 176 </weight>
+            <weight unit="LBS"> 165 </weight>
             <location name="POINTMASS" unit="IN">
                 <x>  24.00 </x>
                 <y>   0.00 </y>
@@ -226,7 +226,7 @@
        <z>  -0.99 </z>
       </location>
       <capacity unit="LBS"> 102.50 </capacity>
-      <contents unit="LBS"> 102.50 </contents>
+      <contents unit="LBS">  51.50 </contents>
       <type>AVGAS</type>  
     </tank>
 
