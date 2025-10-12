@@ -147,6 +147,7 @@
             <file>Nasal/pa11.nas</file>
 			<file>Nasal/doors.nas</file>
 			<file>Nasal/engine.nas</file>
+			<file>Nasal/liveries.nas</file>
         </pa11>
 
 		<acconfig>

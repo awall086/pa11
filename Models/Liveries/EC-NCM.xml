@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <sim>
+        <model>
+            <livery>
+                <name type="string">EC-NCM</name>
+                <index type="int">3</index>
+                <texture>Liveries\EC-NCM\obj1.png</texture>
+                <texture2>Liveries\EC-NCM\obj3.png</texture2>
+            </livery>
+        </model>
+    </sim>
+</PropertyList>

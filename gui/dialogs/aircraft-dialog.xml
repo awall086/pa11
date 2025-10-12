@@ -26,7 +26,7 @@
 
         <empty><stretch>true</stretch></empty>
         <text>
-            <label>Aircraft Options</label>
+            <label>Ground services</label>
         </text>
         <empty><stretch>true</stretch></empty>
 
@@ -41,17 +41,6 @@
 	</button>
 	</group>
 		
-		<hrule/>
-
-		<group>
-			<layout>vbox</layout>
-			<padding>6</padding>
-			<text>
-				<label>Ground services</label>
-				<halign>center</halign>
-			</text>
-		</group>
-
 		<hrule/>
 		
 		<group>
@@ -148,7 +137,7 @@
 	
 	<hrule/>
 
-	<group>
+<!--	<group>
 		<layout>vbox</layout>
 		<padding>6</padding> 
 			<checkbox>
@@ -166,8 +155,8 @@
                     <value>0</value>
                 </binding>
                 <binding>
-                    <command>dialog-update</command><!-- makes sure that command is still there when dialog is closed-->
-                </binding>
+                    <command>dialog-update</command> --> <!-- makes sure that command is still there when dialog is closed-->
+<!--                </binding> 
                 <enable>
                     <and>
                         <property>gear/gear[0]/wow</property>
@@ -182,6 +171,6 @@
                     </and>
                 </enable>
             </checkbox>
-	</group>
+	</group> -->
 
 </PropertyList>

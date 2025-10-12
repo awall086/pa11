@@ -137,6 +137,89 @@
 		<object-name>RLgear6</object-name>
     </effect>
 
+    <!-- Liveries --> 
+
+    <animation>
+        <type>material</type>
+        <object-name>Carenado</object-name>		
+        <object-name>LLgear1</object-name>
+        <object-name>LLgear1</object-name>
+		<object-name>LLgear2</object-name>
+		<object-name>LLgear3</object-name>
+		<object-name>LLgear4</object-name>
+		<object-name>LLgear5</object-name>
+		<object-name>LLgear6</object-name>
+        <object-name>RLgear1</object-name>
+		<object-name>RLgear2</object-name>
+		<object-name>RLgear3</object-name>
+		<object-name>RLgear4</object-name>
+		<object-name>RLgear5</object-name>
+		<object-name>RLgear6</object-name>
+        <object-name>RDoor</object-name>
+		<object-name>Right_Wheel</object-name>
+		<object-name>RLgear8</object-name>
+		<object-name>RLgear9</object-name>
+		<object-name>RLgear10</object-name>
+		<object-name>RLgear11</object-name>
+		<object-name>Left_Wheel</object-name>
+		<object-name>LLgear8</object-name>
+		<object-name>LLgear9</object-name>
+		<object-name>LLgear10</object-name>
+		<object-name>LLgear11</object-name>
+		<object-name>gearsup</object-name>
+        <object-name>Rwindow-int</object-name>
+        <object-name>Lwindow1</object-name>
+		<object-name>interior</object-name>
+		<object-name>interior1</object-name>
+		<object-name>interior2</object-name>
+		<object-name>interior3</object-name>
+		<object-name>interior4</object-name>
+		<object-name>interior5</object-name>
+		<object-name>interior6</object-name>		
+		<object-name>Panel1</object-name>
+        <property-base>sim/model/livery/</property-base>
+        <texture-prop>texture</texture-prop>
+        <texture>obj1.png</texture>
+    </animation>
+
+    <animation>
+        <type>material</type>
+        <object-name>Fuselaje</object-name>
+        <object-name>Fuselaje_front</object-name>
+        <object-name>wings</object-name>
+        <object-name>Deriva</object-name>      
+        <object-name>rudder</object-name>      	
+        <object-name>Laileron</object-name>
+        <object-name>Raileron</object-name>
+        <object-name>HStabilizer</object-name>
+        <object-name>elevator</object-name>
+        <object-name>RDoor_ext</object-name>
+        <object-name>Rwindow</object-name>
+        <object-name>Lwindow2</object-name>
+        <object-name>roof1</object-name>
+        <object-name>roof2</object-name>
+        <object-name>Rstrut1</object-name>		
+        <object-name>Rstrut2</object-name>		
+        <object-name>Rstrut3</object-name>		
+        <object-name>Rstrut4</object-name>		
+        <object-name>Rstrut5</object-name>		
+        <object-name>Rstrut6</object-name>		
+        <object-name>Rstrut7</object-name>		
+        <object-name>Lstrut1</object-name>		
+        <object-name>Lstrut2</object-name>		
+        <object-name>Lstrut3</object-name>		
+        <object-name>Lstrut4</object-name>		
+        <object-name>Lstrut5</object-name>		
+        <object-name>Lstrut6</object-name>		
+        <object-name>Lstrut7</object-name>
+        <object-name>RDoor-int-handle</object-name>
+        <object-name>RDoor-ext-handle</object-name>
+        <object-name>Rwindow_hook</object-name>				
+        <property-base>sim/model/livery/</property-base>
+        <texture-prop>texture2</texture-prop>
+        <texture>obj3.png</texture>
+    </animation>
+
 	<!--		magneto switch	-->	
 	 <animation>
 		<type>knob</type>
@@ -596,7 +679,7 @@
         <object-name>TrimGroup</object-name>
         <property>controls/flight/elevator-trim</property>
         <drag-direction>vertical</drag-direction>
-        <factor>-360</factor>
+        <factor>360</factor>
         <center>
 			<x-m>  0.3771</x-m>
 			<y-m> -0.3356</y-m>
@@ -611,7 +694,7 @@
             <binding>
                 <command>property-adjust</command>
                 <property>controls/flight/elevator-trim</property>
-                <factor>0.01</factor>
+                <factor>-0.01</factor>
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
@@ -1576,7 +1659,7 @@
         <type>rotate</type>
         <object-name>RDoor</object-name>
         <object-name>RDoor_ext</object-name>
-        <object-name>RDoor-ext-handle-m</object-name>
+        <object-name>RDoor-ext-handle</object-name>
         <object-name>RDoor-int-handle</object-name>
                 
         <property alias="../../params/doors/right"/>
@@ -1606,7 +1689,7 @@
 
     <animation>
         <type>pick</type>
-        <object-name>RDoor-ext-handle-m</object-name>
+        <object-name>RDoor-ext-handle</object-name>
         <visible>true</visible>
         <condition>
             <equals>
@@ -1633,7 +1716,7 @@
 
    <animation>
         <type>rotate</type>
-        <object-name>RDoor-ext-handle-m</object-name>                
+        <object-name>RDoor-ext-handle</object-name>                
         <property alias="../../params/doors/right"/>
         <interpolation>
             <entry>
