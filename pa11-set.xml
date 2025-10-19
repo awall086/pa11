@@ -90,6 +90,41 @@
                 <path>Previews/pa11-preview2.jpg</path>
                 <splash type="bool">true</splash>
             </preview>
+            <preview>
+                <type>cockpit</type>
+                <path>Previews/pa11-preview3.jpg</path>
+                <splash type="bool">true</splash>
+            </preview> 
+			<preview>
+                <type>exterior</type>
+                <path>Previews/pa11-preview4.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Previews/pa11-preview5.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>cockpit</type>
+                <path>Previews/pa11-preview6.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Previews/pa11-preview7.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>cockpit</type>
+                <path>Previews/pa11-preview8.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>
+            <preview>
+                <type>exterior</type>
+                <path>Previews/pa11-preview9.jpg</path>
+                <splash type="bool">true</splash>
+            </preview>			
         </previews>
  
 		<systems>

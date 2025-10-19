@@ -100,5 +100,22 @@
             <property>/sim/model/pa11/cockpit/primer-lever-animation</property>
         </output>
     </filter>
+
+    <channel name="carburetor">
+        
+        <fcs_function name="Carb heat on causes RPM drop on 90 HP engine">
+            <function>
+                <ifthen>
+                    <property>/controls/anti-ice/engine[0]/carb-heat</property>
+                    <value>0.475</value>
+                    <value>0.15185</value>
+                </ifthen>
+            </function>
+            <output>/fdm/jsbsim/propulsion/engine[0]/air-intake-impedance-factor</output>
+        </fcs_function>
+
+    </channel>
+
+
 	
 </PropertyList>

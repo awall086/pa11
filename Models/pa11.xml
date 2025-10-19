@@ -65,6 +65,10 @@
         <object-name>RglassR_int</object-name>
         <object-name>roof_int</object-name>
         <object-name>glass_turn</object-name> 
+        <object-name>RPM_glass</object-name>
+        <object-name>Airspeed_glass</object-name>
+        <object-name>Altimetro_glass</object-name>
+		<object-name>OilTOilP_glass</object-name>
  </effect>
 
     <animation>
@@ -86,6 +90,10 @@
 		<object-name>propellerF</object-name>
 		<object-name>propellerR</object-name>
         <object-name>glass_turn</object-name>
+        <object-name>RPM_glass</object-name>
+        <object-name>Airspeed_glass</object-name>
+        <object-name>Altimetro_glass</object-name>
+		<object-name>OilTOilP_glass</object-name>
 	</animation>
 
    <effect>
@@ -1034,7 +1042,44 @@
             <z>1.0</z>
         </axis>
     </animation>
-	
+
+	<!-- Pilot Left Breake Pedals -->
+    <animation>
+        <type>rotate</type>
+        <object-name>Lpilot_brake</object-name>
+        <object-name>Lpilot_brake1</object-name>
+        <property>/controls/gear/brake-left</property>
+        <factor>-40</factor>
+		<center>
+			<x-m>-0.3439</x-m>
+			<y-m>-0.1477</y-m>
+			<z-m>-0.4274</z-m>
+		</center>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>	
+
+	<!-- Pilot Right Breake Pedals -->
+    <animation>
+        <type>rotate</type>
+        <object-name>Rpilot_brake</object-name>
+        <object-name>Rpilot_brake1</object-name>
+        <property>/controls/gear/brake-right</property>
+        <factor>-40</factor>
+		<center>
+			<x-m>-0.3439</x-m>
+			<y-m> 0.1477</y-m>
+			<z-m>-0.4274</z-m>
+		</center>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
 	
 	<!-- Copilot Pedals -->
 	<animation>
@@ -1160,6 +1205,45 @@
             <z>1.0</z>
         </axis>
     </animation>
+
+	<!-- Copilot Left Breake Pedals -->
+    <animation>
+        <type>rotate</type>
+        <object-name>Lcopilot_brake</object-name>
+        <object-name>Lcopilot_brake1</object-name>
+        <property>/controls/gear/brake-left</property>
+        <factor>-40</factor>
+		<center>
+			<x-m> 0.4693</x-m>
+			<y-m>-0.2397</y-m>
+			<z-m>-0.4274</z-m>
+		</center>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>	
+
+	<!-- Copilot Right Breake Pedals -->
+    <animation>
+        <type>rotate</type>
+        <object-name>Rcopilot_brake</object-name>
+        <object-name>Rcopilot_brake1</object-name>
+        <property>/controls/gear/brake-right</property>
+        <factor>-40</factor>
+		<center>
+			<x-m> 0.4693</x-m>
+			<y-m> 0.2397</y-m>
+			<z-m>-0.4274</z-m>
+		</center>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+    </animation>
+	
 	
 	<!-- Propeller -->
 
@@ -1744,10 +1828,10 @@
         <type>pick</type>
         <object-name>RDoor-int-handle</object-name>
         <condition>
-            <equals>
+            <greater-than>
                 <property>/sim/model/door-positions/rightWindow/position-norm</property>
-                <value>1.0</value>
-            </equals>
+                <value>0.1</value>
+            </greater-than>
         </condition>
         <visible>true</visible>
         <action>

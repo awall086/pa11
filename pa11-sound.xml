@@ -77,6 +77,28 @@
 			</pitch>
 		</engine>
 
+        <engine-cut>
+            <name>engine-cut</name>
+            <mode>once</mode>
+            <path>Sounds/engine-cut.wav</path>
+            <condition>
+                <and>
+                    <not>
+                        <property>/engines/engine/running</property>
+                    </not>
+                    <greater-than>
+                        <property>/engines/engine/egt-degf</property>
+                        <value>800</value>
+                    </greater-than>
+                </and>
+            </condition>
+            <volume>
+                <offset>0.3</offset>
+            </volume>
+            <reference-dist>5.0</reference-dist>
+            <max-dist>200.0</max-dist>
+        </engine-cut>
+
 		<propeller>
 			<name>propeller</name>
 			<mode>looped</mode>

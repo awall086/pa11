@@ -14,7 +14,7 @@
 
 <PropertyList>
 
-    <name>c152-about-dialog</name>
+    <name>pa11-about-dialog</name>
     <layout>vbox</layout>
     <resizable>false</resizable>
     <modal>false</modal>
@@ -67,7 +67,7 @@
                             var my_canvas = canvas.get(cmdarg());
 
                             var root = my_canvas.createGroup();
-                            var path = "Aircraft/c152/gui/dialogs/c152.jpg";
+                            var path = "Aircraft/pa11/gui/dialogs/pa11.jpg";
                             var child = root.createChild("image")
                                 .setFile(path)
                                 .setSize(400, 329)
@@ -86,7 +86,7 @@
                     <default-padding>6</default-padding>
                     <text>
                         <halign>left</halign>
-                        <label>Cessna 152 - Version:</label>
+                        <label>Piper PA-11 - Version:</label>
                     </text>
                     <text>
                         <halign>left</halign>
@@ -153,7 +153,7 @@
             <legend>Open Repository in Browser</legend>
             <binding>
                 <command>nasal</command>
-                <script>fgcommand("open-browser", props.Node.new({"url":"https://github.com/awall086/c152"}));</script>
+                <script>fgcommand("open-browser", props.Node.new({"url":"https://github.com/awall086/pa11"}));</script>
             </binding>
         </button>
 
