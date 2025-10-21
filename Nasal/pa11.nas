@@ -41,7 +41,7 @@ var autostart = func (msg=1) {
 ##########################################
 
 var click = func (name, timeout=0.1, delay=0) {
-    var sound_prop = "/sim/model/c152/sound/click-" ~ name;
+    var sound_prop = "/sim/model/pa11/sound/click-" ~ name;
 
     settimer(func {
         # Play the sound
