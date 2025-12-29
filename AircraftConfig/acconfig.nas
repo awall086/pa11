@@ -3,7 +3,7 @@
 
 # Copyright (c) 2020 Josh Davidson (Octal450)
 
-# Adapted to Piper PA-11 by Adrian fernandez (awall86)
+# Adapted to Piper PA-11 by Adrian Fernandez (awall86)
 
 var CONFIG = {
 	noUpdateCheck: 0, # Disable ACCONFIG update checks

@@ -319,11 +319,14 @@
                 <property>/sim/model/pa11/sound/click-magneto-forward</property>
             </condition>
             <position>
-                <x>-0.3660</x>
-                <y>0.3700</y>
-                <z>-0.3500</z>
+                <x> 2.3660</x>
+                <y>-0.3700</y>
+                <z> 0.3500</z>
             </position>
-            <reference-dist>0.2</reference-dist>
+            <volume>
+                <factor>4.0</factor>
+            </volume>
+            <reference-dist>1.2</reference-dist>
             <max-dist>5.0</max-dist>
         </switch>
 
@@ -335,11 +338,14 @@
                 <property>/sim/model/pa11/sound/click-magneto-back</property>
             </condition>
             <position>
-                <x>-0.3660</x>
-                <y>0.3700</y>
-                <z>-0.3500</z>
+                <x> 2.3660</x>
+                <y>-0.3700</y>
+                <z> 0.3500</z>
             </position>
-            <reference-dist>0.2</reference-dist>
+            <volume>
+                <factor>4.0</factor>
+            </volume>
+            <reference-dist>1.2</reference-dist>
             <max-dist>5.0</max-dist>
         </switch>
 
@@ -370,6 +376,25 @@
                 <not>
                     <property>/controls/engines/engine/primer-lever</property>
                 </not>
+            </condition>
+            <volume>
+                <factor>3.32</factor>
+            </volume>
+            <position>
+                <x>-0.3660</x>
+                <y>0.3700</y>
+                <z>-0.3500</z>
+            </position>
+            <reference-dist>0.2</reference-dist>
+            <max-dist>5.0</max-dist>
+        </switch>
+
+        <switch>
+            <name>click-fuel-valve</name>
+            <mode>once</mode>
+            <path>Sounds/click.wav</path>
+            <condition>
+                <property>/controls/fuel/fuel-on</property>
             </condition>
             <volume>
                 <factor>3.32</factor>
