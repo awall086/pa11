@@ -691,7 +691,7 @@
         <object-name>TrimGroup</object-name>
         <property>controls/flight/elevator-trim</property>
         <drag-direction>vertical</drag-direction>
-        <factor>360</factor>
+        <factor>-3500</factor>
         <center>
 			<x-m>  0.3771</x-m>
 			<y-m> -0.3356</y-m>
@@ -706,7 +706,7 @@
             <binding>
                 <command>property-adjust</command>
                 <property>controls/flight/elevator-trim</property>
-                <factor>-0.01</factor>
+                <factor>-0.001</factor>
                 <min>-1</min>
                 <max>1</max>
                 <wrap>0</wrap>
@@ -728,9 +728,9 @@
         <object-name>Trim_ind</object-name>
         <property>controls/flight/elevator-trim</property>
 		<interpolation>
-			<entry><ind>-1</ind><dep>-0.045</dep></entry>
+			<entry><ind> 1</ind><dep>-0.045</dep></entry>
 			<entry><ind> 0</ind><dep>  0.00</dep></entry>
-			<entry><ind> 1</ind><dep> 0.045</dep></entry>
+			<entry><ind>-1</ind><dep> 0.045</dep></entry>
 		</interpolation>
 		<center>
 			<x-m> 0.37773</x-m>

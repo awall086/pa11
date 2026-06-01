@@ -16,7 +16,7 @@
 
         <author>awall86 (Adrian Fernandez Gomez). A special thanks to Octal450 (Josh Davidson) for his excelent Aircraft Config Center Utility</author>
         <status>alpha</status>
-        <aircraft-version>2024.9.11A</aircraft-version>
+        <aircraft-version>2024.9.12A</aircraft-version>
         <minimum-fg-version type="string">2024.1.1</minimum-fg-version> 
 
         <rating>
