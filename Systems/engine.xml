@@ -82,6 +82,29 @@
         </output>
     </filter>
 
+    <logic>
+        <name>Engine Coughing</name>
+        <input>
+            <greater-than>
+                <property>/engines/engine[0]/carb_ice</property>
+                <value>0.0</value>
+            </greater-than>
+            <less-than>
+                <property>/engines/engine[0]/carb_icing_rate</property>
+                <value>-0.5</value>
+            </less-than>
+                    <!-- leaning the mixture while the carb ice is melting helps with the cough in RL, which is why
+                    the egt-norm property is used here -->
+            <greater-than>
+                <property>/engines/engine[0]/egt-norm</property>
+                <value>0.5</value>
+            </greater-than>
+        </input>
+        <output>
+            <property>/engines/engine[0]/coughing</property>
+        </output>
+    </logic>
+
     <filter>
         <name>Controls Primer Lever</name>
         <type>noise-spike</type>
@@ -101,20 +124,39 @@
         </output>
     </filter>
 
-    <channel name="carburetor">
-        
-        <fcs_function name="Carb heat on causes RPM drop on 90 HP engine">
-            <function>
-                <ifthen>
-                    <property>/controls/anti-ice/engine[0]/carb-heat</property>
-                    <value>0.475</value>
-                    <value>0.15185</value>
-                </ifthen>
-            </function>
-            <output>/fdm/jsbsim/propulsion/engine[0]/air-intake-impedance-factor</output>
-        </fcs_function>
+    <filter>
+        <name>Controls Carb Heat Lever</name>
+        <type>noise-spike</type>
+        <max-rate-of-change>4.8</max-rate-of-change>
+        <enable>
+            <condition>
+                <not>
+                    <property>/sim/freeze/replay-state</property>
+                </not>
+            </condition>
+        </enable>
+        <input>
+            <property>/controls/engines/engine[0]/carb-heat</property>
+        </input>
+        <output>
+            <property>/sim/model/pa11/cockpit/carb-heat-animation</property>
+        </output>
+    </filter>
 
-    </channel>
+    <!-- ============================================================== -->
+    <!-- Carburetor Icing drops RPM                                     -->
+    <!-- ============================================================== -->
+
+    <filter>
+        <name>Carb Icing Factor</name>
+        <type>gain</type>
+        <input>
+            <property>/engines/engine[0]/volumetric-efficiency-factor</property>
+        </input>
+        <output>
+            <property>/fdm/jsbsim/propulsion/engine[0]/volumetric-efficiency</property>
+        </output>
+    </filter>
 
 
 	

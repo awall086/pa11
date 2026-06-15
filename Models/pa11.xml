@@ -228,6 +228,10 @@
         <texture>obj3.png</texture>
     </animation>
 
+    <model>
+		<path>Aircraft/Generic/marker.xml</path>
+    </model>
+	
 	<!--		magneto switch	-->	
 	 <animation>
 		<type>knob</type>
@@ -507,8 +511,21 @@
 		   <y>0</y>
 		   <z>1</z>
 		</axis>
+	</animation>
+    <animation>
+        <type>pick</type>
+        <object-name>Ring</object-name>
+        <hovered>
+            <binding>
+                <command>set-tooltip</command>
+                <tooltip-id>magnetcompass</tooltip-id>
+                <label>Magnetic heading: %3d</label>
+                <property>instrumentation/magnetic-compass/indicated-heading-deg</property>
+                <mapping>heading</mapping>
+            </binding>
+        </hovered>
     </animation>
-
+	
 	<!-- Turn Slip indicator -->
 	<animation>
 		<type>rotate</type>
@@ -639,11 +656,11 @@
         <type>rotate</type>
         <object-name>CarbHeat</object-name>
         <object-name>CarbHeat1</object-name>
-        <property>/controls/anti-ice/engine/carb-heat</property>
-        <factor>-60</factor>
+        <property>/sim/model/pa11/cockpit/carb-heat-animation</property>
+        <factor>-100</factor>
 		<center>
-			<x-m>0.32416</x-m>
-			<y-m>-0.3628</y-m>
+			<x-m>0.33202</x-m>
+			<y-m>-0.3582</y-m>
 			<z-m>0.0353</z-m>
 		</center>
         <axis>
@@ -652,32 +669,32 @@
             <z>1.0</z>
         </axis>
     </animation>
-    <animation>
-        <type>pick</type>
+	<animation>	
+		<type>slider</type>
         <object-name>CarbHeat</object-name>
         <visible>true</visible>
+        <drag-direction>horizontal</drag-direction>
         <action>
-            <button>0</button>
-            <repeatable>false</repeatable>
             <binding>
-                <command>property-toggle</command>
-                <property>/controls/anti-ice/engine/carb-heat</property>
+                <command>property-adjust</command>
+                <property>/controls/engines/engine[0]/carb-heat</property>
+                <factor>-0.05</factor>
+                <min>0</min>
+                <max>1</max>
+                <wrap>0</wrap>
             </binding>
         </action>
         <hovered>
             <binding>
                 <command>set-tooltip</command>
-                <tooltip-id>carburetor-heat</tooltip-id>
-                <label>Carburetor: %s</label>
-                <mapping>nasal</mapping>
-                <property>/controls/anti-ice/engine/carb-heat</property>
-                <script>
-                    var modes = ['COLD', 'HEATED'];
-                    return modes[arg[0]];
-                </script>
+                <label>Carburator Heat: %3d%%</label>
+                <measure-text>Carburator Heat: 100%</measure-text>
+                <tooltip-id>CarbHeat</tooltip-id>
+                <mapping>percent</mapping>
+                <property>/controls/engines/engine[0]/carb-heat</property>
             </binding>
         </hovered>
-    </animation>
+	</animation>
 
 	<!-- Trim Handle -->
 	<animation>
@@ -1682,8 +1699,8 @@
 		<property>gear/gear[2]/compression-norm</property>
 		<factor>-20.0</factor>
 		<center>
-			<x-m>4.95556</x-m>
-			<y-m>-0.00616</y-m>
+			<x-m> 4.95556</x-m>
+			<y-m> 0.0000</y-m>
 			<z-m>-0.00483</z-m>
 		</center>
 		<axis>
@@ -1694,27 +1711,10 @@
 	</animation>
 
 	<animation>
-		<type>spin</type>
-		<object-name>Tail_Wheel</object-name>
-		<property>gear/gear[2]/rollspeed-ms</property>
-		<factor>59.6</factor>
-		<center>
-			<x-m>5.28736</x-m>
-			<y-m>-0.002</y-m>
-			<z-m>-0.1758</z-m>
-		</center>
-		<axis>
-			<x>0.0</x>
-			<y>-1.0</y>
-			<z>0.0</z>
-		</axis>
-	</animation>
-
-	<animation>
 		<type>rotate</type>
-		<object-name>Tail_Wheel</object-name>
-		<object-name>TLgear1</object-name>
+		<object-name>TLgear1</object-name>		
 		<object-name>Tailaxis</object-name>
+		<object-name>Tail_Wheel</object-name>
 		<property>gear/gear[2]/steering-norm</property>
 		<interpolation>
 			<entry>
@@ -1729,17 +1729,34 @@
 				<ind>-1.0</ind>
 				<dep>-30</dep>
 			</entry>
-		</interpolation>
+		</interpolation> 
 		<axis>
 			<x>0</x>
 			<y>0</y>
 			<z>1</z>
 		</axis>
 		<center>
-			<x-m>5.22126</x-m>
-			<y-m>-0.0013</y-m>
-			<z-m>-0.0773</z-m>
+			<x-m> 5.2201</x-m>
+			<y-m>-0.0029</y-m>
+			<z-m>-0.0814</z-m>
 		</center>
+	</animation>
+
+	<animation>
+		<type>spin</type>
+		<object-name>Tail_Wheel</object-name>
+		<property>gear/gear[2]/rollspeed-ms</property>
+		<factor>59.6</factor>
+		<center>
+			<x-m>5.28736</x-m>
+			<y-m> 0.000</y-m>
+			<z-m>-0.1758</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis> 
 	</animation>
 
 	<!-- Right Door -->
@@ -1766,10 +1783,10 @@
             </entry>
         </interpolation>
 		<axis>
-			<x1-m>0.95036</x1-m>
+			<x1-m>0.95033</x1-m>
 			<y1-m>0.39769</y1-m>
 			<z1-m>-0.21362</z1-m>
-			<x2-m>0.31306</x2-m>
+			<x2-m>0.31309</x2-m>
 			<y2-m>0.37762</y2-m>
 			<z2-m>-0.21944</z2-m>
 		</axis>
@@ -1896,9 +1913,9 @@
             </entry>
         </interpolation>
 		<center>
-			<x-m>0.55326</x-m>
-			<y-m>0.3391</y-m>
-			<z-m>0.1006</z-m>
+			<x-m>0.55327</x-m>
+			<y-m>0.35624</y-m>
+			<z-m>0.10061</z-m>
 		</center>
 		<axis>
 			<x>0.0</x>
@@ -2050,6 +2067,10 @@
                     <property>sim/current-view/name</property>
                     <value>IFR Training View</value>
                 </not-equals>
+				<not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>Lateral panel</value>
+                </not-equals> 
                 <not>
                     <property>sim/walker/outside</property>
                 </not>
@@ -2073,10 +2094,51 @@
                     <property>sim/current-view/name</property>
                     <value>Cockpit Right Seat View</value>
                 </not-equals>
+				<not-equals>
+                    <property>sim/current-view/name</property>
+                    <value>Lateral panel</value>
+                </not-equals>
                 <property>pax/co-pilot/present</property>
                 <property>sim/model/occupants</property>
             </and>
         </condition>
+    </animation>
+
+	<!-- Narco 120 -->
+	<model>
+	   <name>Comm1</name>
+	   <path>Models/Interior/narco_120/narco_120.xml</path>
+	   <offsets>
+		  <x-m>-0.11718</x-m>
+		  <y-m>0.0000 </y-m>
+		  <z-m>0.05000</z-m>
+		  <pitch-deg>-8</pitch-deg>
+	   </offsets>
+	</model>
+    <animation>
+		<type>select</type>
+        <object-name>Comm1</object-name>
+		<condition>
+			<property>/sim/model/pa11/instrumentation/comm1_installed</property>
+		</condition>
+    </animation>
+
+	<!-- Garmin GPSmap 196 -->
+    <model>
+        <name>garmin196</name>
+		<path>Models/Interior/garmin196/garmin196.xml</path>
+		<offsets> 
+			<x-m>-0.22044</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.312</z-m>
+		</offsets>
+	</model>
+    <animation>
+		<type>select</type>
+        <object-name>garmin196</object-name>
+		<condition>
+			<property>sim/model/pa11/garmin196-visible</property>
+		</condition> 
     </animation>
 	
 </PropertyList>

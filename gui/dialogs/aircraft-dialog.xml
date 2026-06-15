@@ -67,7 +67,7 @@
             </checkbox>
 
             <checkbox>
-                <halign>left</halign>
+                <halign>right</halign>
                 <label>Place right safety cone</label>
                 <live>true</live>
                 <property>/sim/coneR/enable</property>
@@ -94,7 +94,7 @@
 		<padding>6</padding>
 	
 		<checkbox>
-            <halign>center</halign>
+            <halign>left</halign>
             <label>Place left wheel chock</label>
             <live>true</live>
 			<property>/sim/chocks001/enable</property>
@@ -135,5 +135,42 @@
 	</group>	
 	
 	<hrule/>
+	
+		<group>	
+			<layout>vbox</layout>
+			<padding>2</padding> 
+			 <text>
+                <label>Panel options</label>
+                <halign>center</halign>
+            </text>
+		</group>
+		
+        <hrule/>
 
+		<group>	
+			<layout>hbox</layout>
+			<padding>6</padding>		
+			<checkbox>
+                <halign>left</halign>
+                <label>Add/Remove Comm1 Radio</label>
+                <property>/sim/model/pa11/instrumentation/comm1_installed</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/sim/model/pa11/instrumentation/comm1_installed</property>
+                </binding>
+            </checkbox>	
+
+			<checkbox>
+                <halign>right</halign>
+                <label>Show/Hide Garmin GPSMap 196</label>
+                <property>/sim/model/pa11/garmin196-visible</property>
+                <live>true</live>
+                <binding>
+                    <command>property-toggle</command>
+                    <property>/sim/model/pa11/garmin196-visible</property>
+                </binding>
+            </checkbox>	
+		</group>
+		
 </PropertyList>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+     <filter>
+        <name>GPS Night Mode</name>
+        <type>gain</type>
+        <input>
+            <condition>
+                <property>/instrumentation/garmin196/status</property>
+            </condition>
+            <property>/controls/lighting/gps-norm</property>
+        </input>
+        <input>
+            <value>0.0</value>
+        </input>
+        <output>
+            <property>/instrumentation/garmin196/lite</property>
+        </output>
+    </filter>
+
+</PropertyList>

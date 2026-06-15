@@ -1,0 +1,408 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <!-- ============ PRE-FLIGHT ============ -->
+    <checklist>
+		<title>Pre-Flight Inspection</title>
+		<item>
+			<name>Control Lock</name>
+			<value>Remove</value>
+		</item>
+		<item>
+			<name>Magneto Switch</name>
+			<value>OFF</value>
+			<condition>
+				<equals>
+					<property>/controls/switches/magnetos</property>
+					<value>0</value>
+				</equals>
+			</condition>
+            <marker>
+                <x-m>0.4157</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.0595</z-m>
+                <scale>3.8099</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/switches/magnetos</property>
+                <value>0</value>
+            </binding>
+		</item>
+		<item>
+			<name>Fuel Valve</name>
+			<value>OFF</value>
+			<condition>
+				<equals>
+					<property>/controls/fuel/fuel-on</property>
+					<value>0</value>
+				</equals>
+			</condition>
+            <marker>
+                <x-m>0.1116</x-m>
+                <y-m>-0.3041</y-m>
+                <z-m>-0.0694</z-m>
+                <scale>4.5372</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/fuel/fuel-on</property>
+                <value>0</value>
+            </binding>
+		</item>
+		<item>
+			<name>Carb Heat</name>
+			<value>COLD</value>
+			<condition>
+				<equals>
+					<property>/controls/engines/engine[0]/carb-heat</property>
+					<value>0</value>
+				</equals>
+			</condition>
+            <marker>
+                <x-m>0.3496</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.0347</z-m>
+                <scale>3.8099</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/engines/engine[0]/carb-heat</property>
+                <value>0</value>
+            </binding>
+		</item>
+		<item>
+			<name>Altimeter</name>
+			<value>Set to field elevation</value>
+		</item>
+		<item>
+			<name>Flight Controls</name>
+			<value>Free and correct</value>
+		</item>
+    </checklist>
+
+    <!-- ============ ENGINE START ============ -->
+    <checklist>
+		<title>Engine Starting</title>
+		<item>
+			<name>Brakes</name>
+			<value>SET</value>
+			<condition>
+				<greater-than>
+					<property>/controls/gear/brake-left</property>
+					<value>0.5</value>
+				</greater-than>
+			</condition>
+		</item>
+		<item>
+			<name>Fuel Valve</name>
+			<value>ON</value>
+			<condition>
+				<equals>
+					<property>/controls/fuel/fuel-on</property>
+					<value>1</value>
+				</equals>
+			</condition>
+            <marker>
+                <x-m>0.1116</x-m>
+                <y-m>-0.3041</y-m>
+                <z-m>-0.0694</z-m>
+                <scale>4.5372</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/fuel/fuel-on</property>
+                <value>1</value>
+            </binding>
+		</item>
+		<item>
+			<name>Throttle</name>
+			<value>Cracked (~1/10)</value>
+			<condition>
+				<greater-than>
+					<property>/controls/engines/engine[0]/throttle</property>
+					<value>0.09</value>
+				</greater-than>
+			</condition>
+		    <marker>
+                <x-m>0.2107</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.1364</z-m>
+                <scale>5.3471</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/engines/engine[0]/throttle</property>
+                <value>0.10</value>
+            </binding>
+		</item>
+		<item>
+			<name>Magnetos</name>
+			<value>BOTH ON</value>
+			<condition>
+				<equals>
+					<property>/controls/switches/magnetos</property>
+					<value>3</value>
+				</equals>
+			</condition>
+            <marker>
+                <x-m>0.4157</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.0595</z-m>
+                <scale>3.8099</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/switches/magnetos</property>
+                <value>3</value>
+            </binding>
+		</item>
+		<item>
+			<name>Engine primer (Only for COLD start)</name>
+			<value>3 strokes</value>
+			<condition>
+				<equals>
+					<property>/controls/engines/engine/primer</property>
+					<value>3</value>
+				</equals>
+			</condition>
+			<marker>
+                <x-m>-0.0793</x-m>
+                <y-m>0.2736</y-m>
+                <z-m>0.1289</z-m>
+                <scale>2.8843</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/engines/engine/primer</property>
+                <value>3</value>
+            </binding>
+		</item>
+		<item>
+			<name>Propeller area</name>
+			<value>Clear</value>
+		</item>
+		<item>
+            <name>Ignition Switch</name>
+            <value>ON</value>
+            <value>(press s and hold until the engine starts)</value>
+            <marker>
+                <x-m>-0.0793</x-m>
+                <y-m>-0.2686</y-m>
+                <z-m>0.1372</z-m>
+                <scale>2.8843</scale>
+            </marker>
+		</item>
+		<item>
+			<name>Oil Pressure</name>
+			<value>Positive within 30 seconds</value>
+			<condition>
+				<greater-than>
+					<property>/engines/engine/oil-pressure-psi</property>
+					<value>10</value>
+				</greater-than>
+			</condition>
+            <marker>
+                <x-m>-0.1298</x-m>
+                <y-m>0.2099</y-m>
+                <z-m>0.1537</z-m>
+                <scale>3.5455</scale>
+            </marker>
+		</item>
+    </checklist>
+
+    <!-- ============ CIGARS ============ -->
+    <checklist>
+      <title>Execute CIGARS</title>
+		<item>
+			<name>The "CIGARS" is an acronym. Early versions of the PA-11, like the J3 did not have a before takeoff checklist.</name>
+		</item>
+		<item>
+			<name>This acronym is translated as follows:</name>
+		</item>
+		<item>
+			<name>C for Controls free and correct</name>
+			<value>Check</value>
+		</item>
+		<item>
+			<name>I for Instruments correct</name>
+			<value>Check</value>
+		</item>
+		<item>
+			<name>G for Gas level correct (Fuel Quantity)</name>
+			<value>Check</value>
+			<condition>
+				<greater-than>
+					<property>consumables/fuel/tank[1]/level-gal_us</property>
+					<value>0.30</value>
+				</greater-than>
+			</condition>
+            <marker>
+                <x-m>0.6488</x-m>
+                <y-m>-0.3140</y-m>
+                <z-m>0.6281</z-m>
+                <scale>5.0000</scale>
+            </marker>
+		</item>
+		<item>
+			<name>A for Attitude correct (trim)</name>
+			<value>Set neutral for takeoff</value>
+			<condition>
+				<equals>
+					<property>/controls/flight/elevator-trim</property>
+					<value>0.0</value>
+				</equals>
+			</condition>
+			<marker>
+                <x-m>0.3760</x-m>
+                <y-m>-0.3074</y-m>
+                <z-m>-0.0835</z-m>
+                <scale>3.9752</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/flight/elevator-trim</property>
+                <value>0</value>
+            </binding>
+		</item>
+		<item>
+			<name>R for Runup (check magnetos)</name>
+			<value>Check max drop 75 RPM</value>
+		</item>
+		<item>
+			<name>S for Safety check (Doors and windows - Seat belts)</name>
+			<value>Closed and latched - Fastened</value>
+		</item>
+    </checklist>
+
+    <!-- ============ IN-FLIGHT ============ -->
+    <checklist>
+		<title>In-Flight</title>
+		<item>
+			<name>Engine Instruments</name>
+			<value>Check normal values</value>
+		</item>
+		<item>
+			<name>Carb Heat</name>
+			<value>As required</value>
+		</item>
+    </checklist>
+
+    <!-- ============ BEFORE LANDING ============ -->
+    <checklist>
+		<title>Before Landing</title>
+		<item>
+			<name>Fuel Valve</name>
+			<value>ON</value>
+			<condition>
+				<not-equals>
+					<property>/controls/fuel/fuel-on</property>
+					<value>0</value>
+				</not-equals>
+			</condition>
+            <marker>
+                <x-m>0.1116</x-m>
+                <y-m>-0.3041</y-m>
+                <z-m>-0.0694</z-m>
+                <scale>4.5372</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/fuel/fuel-on</property>
+                <value>1</value>
+            </binding>
+		</item>
+		<item>
+			<name>Carb Heat</name>
+			<value>ON</value>
+			<condition>
+				<equals>
+					<property>/controls/engines/engine[0]/carb-heat</property>
+					<value>1</value>
+				</equals>
+			</condition>
+            <marker>
+                <x-m>0.3496</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.0347</z-m>
+                <scale>3.8099</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/engines/engine[0]/carb-heat</property>
+                <value>1</value>
+            </binding>
+		</item>
+    </checklist>
+
+    <!-- ============ SHUTDOWN ============ -->
+    <checklist>
+		<title>Shutdown / Post-Flight</title>
+		<item>
+			<name>Throttle</name>
+			<value>Idle</value>
+			<condition>
+				<equals>
+					<property>/controls/engines/engine[0]/throttle</property>
+					<value>0.0</value>
+				</equals>
+			</condition>
+		    <marker>
+                <x-m>0.2107</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.1364</z-m>
+                <scale>5.3471</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/engines/engine[0]/throttle</property>
+                <value>0.0</value>
+            </binding>
+		</item>
+		<item>
+			<name>Magnetos</name>
+			<value>OFF</value>
+			<condition>
+				<equals>
+					<property>/controls/switches/magnetos</property>
+					<value>0</value>
+				</equals>
+			</condition>
+		    <marker>
+                <x-m>0.4157</x-m>
+                <y-m>-0.2917</y-m>
+                <z-m>0.0595</z-m>
+                <scale>3.8099</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/switches/magnetos</property>
+                <value>0</value>
+            </binding>
+		</item>
+		<item>
+			<name>Fuel Valve</name>
+			<value>OFF</value>
+			<condition>
+				<equals>
+					<property>/controls/fuel/fuel-on</property>
+					<value>0</value>
+				</equals>
+			</condition>
+		    <marker>
+                <x-m>0.1116</x-m>
+                <y-m>-0.3041</y-m>
+                <z-m>-0.0694</z-m>
+                <scale>4.5372</scale>
+            </marker>
+            <binding>
+                <command>property-assign</command>
+                <property>/controls/fuel/fuel-on</property>
+                <value>0</value>
+            </binding>
+		</item>
+    </checklist>
+	
+</PropertyList>
+

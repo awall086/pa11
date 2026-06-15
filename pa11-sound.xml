@@ -14,6 +14,10 @@
 				<z>0.0</z>
 			</position>
 			<volume>
+                <factor>0.7143</factor>
+                <property>/sim/model/pa11/sound/volume-boost-doors</property>
+            </volume>
+			<volume>
 				<offset>0.4</offset>
 			</volume>
 		</crank>
@@ -33,6 +37,10 @@
 				<y>0.0</y>
 				<z>0.0</z>
 			</position>
+			<volume>
+                <factor>0.7143</factor>
+                <property>/sim/model/pa11/sound/volume-boost-doors</property>
+            </volume>
 			<volume>
 				<offset>0.5</offset>
 			</volume>
@@ -58,15 +66,11 @@
 			<path>/Aircraft/pa11/Sounds/Sounds_Engine_Continental-O200A.wav</path>
 			<property>/engines/engine/running</property>
 			<volume>
-			  <property>/engines/engine/mp-osi</property>
-			  <factor>0.027777</factor> 
-			  <!-- these values of min and max are unlikely to be relevant,
-				   because the MAP is unlikely to go below 5" or above 28".
-				   Also note that propeller noise is additional to engine
-				   noise, rather like an <offset>.
-					 -->
-			  <min>0.30</min>
-			  <max>2.0</max>
+                <factor>0.7143</factor>
+                <property>/sim/model/pa11/sound/volume-boost-doors</property>
+            </volume>
+			<volume>
+				<offset>0.5857</offset>
 			</volume>
 			<pitch>
 				<property>/engines/engine/rpm</property>
@@ -92,6 +96,10 @@
                     </greater-than>
                 </and>
             </condition>
+			<volume>
+                <factor>0.7143</factor>
+                <property>/sim/model/pa11/sound/volume-boost-doors</property>
+            </volume>
             <volume>
                 <offset>0.3</offset>
             </volume>
@@ -110,9 +118,13 @@
 				</greater-than>
 			</condition>
 			<volume>
+                <factor>0.7143</factor>
+                <property>/sim/model/pa11/sound/volume-boost-doors</property>
+            </volume>
+			<volume>
 				<property>/engines/engine/rpm</property>
 				<factor>0.0001</factor>
-				<max>0.25</max>
+				<max>0.45</max>
 			</volume>
 			<pitch>
 				<property>/engines/engine/rpm</property>
@@ -200,7 +212,7 @@
                 <y>-0.6</y>
                 <z>-0.35</z>
             </position>
-            <reference-dist>1.5</reference-dist>
+            <reference-dist>20.5</reference-dist>
             <max-dist>50.0</max-dist>
         </right-door-opening>
 
@@ -211,7 +223,7 @@
             <condition>
                 <less-than>
                     <property>/sim/model/door-positions/rightDoor/position-norm</property>
-                    <value>0.50</value>
+                    <value>0.30</value>
                 </less-than>
             </condition>
             <position>
@@ -219,7 +231,7 @@
                 <y>-0.6</y>
                 <z>-0.35</z>
             </position>
-            <reference-dist>1.5</reference-dist>
+            <reference-dist>20.5</reference-dist>
             <max-dist>50.0</max-dist>
         </right-door-closing>
 
@@ -241,7 +253,7 @@
             <volume>
                 <factor>0.7</factor>
             </volume>
-            <reference-dist>0.2</reference-dist>
+            <reference-dist>20.2</reference-dist>
             <max-dist>50.0</max-dist>
         </left-window-opening>
 
@@ -263,7 +275,7 @@
             <volume>
                 <factor>0.55</factor>
             </volume>
-            <reference-dist>0.2</reference-dist>
+            <reference-dist>20.2</reference-dist>
             <max-dist>50.0</max-dist>
         </left-window-closing>
 
@@ -274,7 +286,7 @@
             <condition>
                 <greater-than>
                     <property>/sim/model/door-positions/rightWindow/position-norm</property>
-                    <value>0.4</value>
+                    <value>0.95</value>
                 </greater-than>
             </condition>
             <position>
@@ -285,7 +297,7 @@
             <volume>
                 <factor>0.7</factor>
             </volume>
-            <reference-dist>0.2</reference-dist>
+            <reference-dist>20.2</reference-dist>
             <max-dist>50.0</max-dist>
         </right-window-opening>
 
@@ -296,7 +308,7 @@
             <condition>
                 <less-than>
                     <property>/sim/model/door-positions/rightWindow/position-norm</property>
-                    <value>0.5</value>
+                    <value>0.05</value>
                 </less-than>
             </condition>
             <position>
@@ -307,9 +319,49 @@
             <volume>
                 <factor>0.55</factor>
             </volume>
-            <reference-dist>0.2</reference-dist>
+            <reference-dist>20.2</reference-dist>
             <max-dist>50.0</max-dist>
         </right-window-closing>
+
+        <left-pedals>
+            <name>left-pedals</name>
+            <mode>once</mode>
+            <path>/Aircraft/pa11/Sounds/rudder-pedals.wav</path>
+            <condition>
+				<or>
+					<and>
+						<greater-than>
+							<property>controls/flight/rudder</property>
+							<value>0.1</value>
+						</greater-than>
+						<less-than>
+							<property>controls/flight/rudder</property>
+							<value>0.9</value>
+						</less-than>
+					</and>
+					<and>
+						<greater-than>
+							<property>controls/flight/rudder</property>
+							<value>-0.9</value>
+						</greater-than>
+						<less-than>
+							<property>controls/flight/rudder</property>
+							<value>-0.1</value>
+						</less-than>
+					</and>
+				</or>
+            </condition>
+            <position>
+                <x>2.58</x>
+                <y>0.72</y>
+                <z>0.22</z>
+            </position>
+            <volume>
+                <factor>0.7</factor>
+            </volume>
+            <reference-dist>20.2</reference-dist>
+            <max-dist>50.0</max-dist>
+        </left-pedals>
 
         <switch>
             <name>click-magneto-forward</name>
@@ -319,15 +371,15 @@
                 <property>/sim/model/pa11/sound/click-magneto-forward</property>
             </condition>
             <position>
-                <x> 2.3660</x>
-                <y>-0.3700</y>
+                <x> 3.3660</x>
+                <y> 0.3700</y>
                 <z> 0.3500</z>
             </position>
             <volume>
-                <factor>4.0</factor>
+                <factor>1.0</factor>
             </volume>
-            <reference-dist>1.2</reference-dist>
-            <max-dist>5.0</max-dist>
+            <reference-dist>20.2</reference-dist>
+            <max-dist>50.0</max-dist>
         </switch>
 
         <switch>
@@ -339,14 +391,14 @@
             </condition>
             <position>
                 <x> 2.3660</x>
-                <y>-0.3700</y>
+                <y> 0.3700</y>
                 <z> 0.3500</z>
             </position>
             <volume>
-                <factor>4.0</factor>
+                <factor>1.0</factor>
             </volume>
-            <reference-dist>1.2</reference-dist>
-            <max-dist>5.0</max-dist>
+            <reference-dist>20.2</reference-dist>
+            <max-dist>50.0</max-dist>
         </switch>
 
         <switch>
@@ -357,15 +409,15 @@
                 <property>/controls/engines/engine/primer-lever</property>
             </condition>
             <volume>
-                <factor>3.32</factor>
+                <factor>2.00</factor>
             </volume>
             <position>
                 <x>-0.3660</x>
                 <y>0.3700</y>
                 <z>-0.3500</z>
             </position>
-            <reference-dist>0.2</reference-dist>
-            <max-dist>5.0</max-dist>
+            <reference-dist>20.2</reference-dist>
+            <max-dist>50.0</max-dist>
         </switch>
 
         <switch>
@@ -378,15 +430,15 @@
                 </not>
             </condition>
             <volume>
-                <factor>3.32</factor>
+                <factor>2.00</factor>
             </volume>
             <position>
                 <x>-0.3660</x>
                 <y>0.3700</y>
                 <z>-0.3500</z>
             </position>
-            <reference-dist>0.2</reference-dist>
-            <max-dist>5.0</max-dist>
+            <reference-dist>20.2</reference-dist>
+            <max-dist>50.0</max-dist>
         </switch>
 
         <switch>
@@ -397,15 +449,15 @@
                 <property>/controls/fuel/fuel-on</property>
             </condition>
             <volume>
-                <factor>3.32</factor>
+                <factor>2.00</factor>
             </volume>
-            <position>
+           <position>
                 <x>-0.3660</x>
                 <y>0.3700</y>
                 <z>-0.3500</z>
             </position>
-            <reference-dist>0.2</reference-dist>
-            <max-dist>5.0</max-dist>
+            <reference-dist>20.2</reference-dist>
+            <max-dist>50.0</max-dist>
         </switch>
 		
 	</fx>

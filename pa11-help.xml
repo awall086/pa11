@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+
+    <title>Piper PA-11 CUb Special Help</title>
+
+    <key>
+        <name>Shift+n</name>
+        <desc>Select GPS View</desc>
+    </key>
+    <key>
+        <name>Shift+l</name>
+        <desc>Select Lateral Panel View</desc>
+    </key>
+
+    <key>
+        <name>Shift+q</name>
+        <desc>Reset to Default Cockpit View</desc>
+    </key>
+
+    <line/>
+    <line>Takeoff: Full throttle, rotate at 45 MPH</line>
+    <line>Climbout: Best rate of climb (Vy) 55 MPH</line>
+    <line>Cruise: Throttle 75%, 75 MPH</line>
+    <line>Landing: Carb Heated, touch at 50 MPH</line>
+    <line/>
+    <line>_________V Speeds_________</line>
+    <line/>
+    <line>Vs1: 40 MPH</line>
+    <line>Vx: 50 MPH</line>
+    <line>Vy: 55 MPH</line>
+    <line>Va: 99kts</line>
+    <line>Vno: 100 MPH</line>
+    <line>Vne: 122 MPH</line>
+
+
+</PropertyList>

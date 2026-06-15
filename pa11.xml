@@ -779,4 +779,6 @@
  <external_reactions>
  </external_reactions>
 
+	<system file="pa11-engine"/>
+
 </fdm_config>

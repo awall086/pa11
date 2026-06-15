@@ -15,8 +15,8 @@
         </tags>
 
         <author>awall86 (Adrian Fernandez Gomez). A special thanks to Octal450 (Josh Davidson) for his excelent Aircraft Config Center Utility</author>
-        <status>alpha</status>
-        <aircraft-version>2024.9.12A</aircraft-version>
+        <status>beta</status>
+        <aircraft-version>2026.6.14B</aircraft-version>
         <minimum-fg-version type="string">2024.1.1</minimum-fg-version> 
 
         <rating>
@@ -53,8 +53,21 @@
 
             <!-- Human models persistent menu choice -->
             <occupants type="bool">true</occupants>
+		
+			<pa11>
+				<instrumentation>
+					<comm1_installed type="bool">false</comm1_installed>
+				</instrumentation>
+				<garmin196-visible type="bool">false</garmin196-visible>
 			
+			    <lighting>
+					<gps-norm type="float">0</gps-norm>
+				</lighting>
+			</pa11>
+				
 		</model>
+
+		<help include="pa11-help.xml"/>
 		
 		<gui n="0" include="gui/pa11-gui.xml"/>
 		
@@ -70,6 +83,40 @@
                 <z-offset-m archive="y" type="double"> 0.56792</z-offset-m>
                 <pitch-offset-deg type="double">-11.5</pitch-offset-deg>
                 <default-field-of-view-deg>75</default-field-of-view-deg>
+            </config>
+        </view>
+
+        <view n="100">
+            <name>GPS View</name>
+            <type>lookfrom</type>
+            <enabled type="bool">true</enabled>
+            <internal type="bool" archive="y">true</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <x-offset-m archive="y">-0.1238</x-offset-m>
+                <y-offset-m archive="y">0.5069</y-offset-m>
+                <z-offset-m archive="y">0.5679</z-offset-m>
+                <default-field-of-view-deg type="double">27.36</default-field-of-view-deg>
+                <heading-offset-deg archive="y">351.84</heading-offset-deg>
+                <pitch-offset-deg archive="y">-13.625</pitch-offset-deg>
+                <roll-offset-deg archive="y">0</roll-offset-deg>
+            </config>
+        </view>
+
+        <view n="101">
+            <name>Lateral panel</name>
+            <type>lookfrom</type>
+            <enabled type="bool">true</enabled>
+            <internal type="bool" archive="y">true</internal>
+            <config>
+                <from-model type="bool">true</from-model>
+                <x-offset-m archive="y">0.03476</x-offset-m>
+                <y-offset-m archive="y">0.09792</y-offset-m>
+                <z-offset-m archive="y">0.5311</z-offset-m>
+                <default-field-of-view-deg type="double">79</default-field-of-view-deg>
+                <heading-offset-deg archive="y">40</heading-offset-deg>
+                <pitch-offset-deg archive="y">-23.5</pitch-offset-deg>
+                <roll-offset-deg archive="y">0</roll-offset-deg>
             </config>
         </view>
  
@@ -128,7 +175,6 @@
         </previews>
  
 		<systems>
- <!--           <path>Systems/systems.xml</path>  -->
             
             <property-rule n="100">
                 <path>Systems/engine.xml</path>
@@ -139,8 +185,17 @@
             <property-rule n="102">
                 <path>Systems/pax.xml</path>
             </property-rule> 
+            <property-rule n="103">
+                <path>Aircraft/pa11/Systems/sounds.xml</path>
+            </property-rule>
+			<property-rule n="104">
+                <name>FiltersOnly</name>
+                <path>Systems/instruments.xml</path>
+            </property-rule>
+
 		</systems>
 
+		<checklists include="pa11-checklists.xml"/>
 
         <multiplay>
             <generic>
@@ -151,6 +206,10 @@
         </multiplay>
 
     </sim>
+
+    <input>
+        <keyboard include="pa11-keyboard.xml"/>
+    </input>
 
     <fdm>
         <jsbsim>
@@ -183,11 +242,17 @@
 			<file>Nasal/doors.nas</file>
 			<file>Nasal/engine.nas</file>
 			<file>Nasal/liveries.nas</file>
+			<file>Nasal/views.nas</file>
         </pa11>
 
 		<acconfig>
 			<file>Aircraft/pa11/AircraftConfig/acconfig.nas</file>
 		</acconfig>
+
+        <garmin196>
+            <file>Aircraft/pa11/Models/Interior/garmin196/garmin196.nas</file>
+        </garmin196>
+		
     </nasal>
 
     <payload>
@@ -218,6 +283,7 @@
                 <primer-lever type="bool">false</primer-lever>
                 <use-primer type="bool">false</use-primer>
                 <magnetos>3</magnetos>
+				<carb-heat type="double">0</carb-heat>
             </engine>
         </engines>
 
@@ -226,6 +292,28 @@
             <magnetos type="double">0</magnetos>
 			<starter type="bool">false</starter>
 		</switches>
+		
+		<fuel>
+			<fuel-on type="bool">false</fuel-on>
+		</fuel>
     </controls>
+
+	<instrumentation>
+		<comm n="0">
+			<power-btn type="bool">false</power-btn>
+		</comm>
+		<comm n="1">
+			<serviceable type="bool">false</serviceable>
+		</comm>
+		<nav n="0">
+			<serviceable type="bool">false</serviceable>
+		</nav>
+		<nav n="1">
+			<serviceable type="bool">false</serviceable>
+		</nav>
+		<marker-beacon>
+			<serviceable type="bool">false</serviceable>
+		</marker-beacon>
+	</instrumentation>
 	
 </PropertyList>
