@@ -1785,7 +1785,7 @@ name "Airspeed_glass"
 data 13
 Cylinder.7523
 crease 30.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 33
 -0.1231 0.19284 0.08243
@@ -4328,7 +4328,7 @@ name "Altimetro_glass"
 data 13
 Cylinder.7524
 crease 30.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 33
 -0.1245 0.16585 -0.10197
@@ -90857,7 +90857,7 @@ name "glass_turn"
 data 12
 Cylinder.502
 crease 62.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 56
 -0.11463 0.12067 0.02578
@@ -127182,7 +127182,7 @@ name "LglassC"
 data 8
 Mesh.018
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 16
 0.46227 0.55616 0.3649
@@ -127257,7 +127257,7 @@ name "LglassC_int"
 data 8
 Mesh.735
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 16
 0.46227 0.55616 0.3649
@@ -127332,7 +127332,7 @@ name "LglassF"
 data 8
 Mesh.020
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 5
 -0.02203 0.131 0.36553
@@ -127360,7 +127360,7 @@ name "LglassF_int"
 data 8
 Mesh.734
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 5
 -0.02203 0.131 0.36553
@@ -127388,7 +127388,7 @@ name "LglassR"
 data 8
 Mesh.028
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 44
 1.58064 0.21085 0.36893
@@ -127599,7 +127599,7 @@ name "LglassR_int"
 data 8
 Mesh.736
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 44
 1.58064 0.21085 0.36893
@@ -271291,7 +271291,7 @@ name "OilTOilP_glass"
 data 13
 Cylinder.7525
 crease 30.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 33
 -0.12613 0.19766 -0.25399
@@ -301944,7 +301944,7 @@ name "RglassF"
 data 8
 Mesh.021
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 21
 1.1303 0.13076 -0.39237
@@ -302037,7 +302037,7 @@ name "RglassF_int"
 data 8
 Mesh.737
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 21
 1.1303 0.13076 -0.39237
@@ -302130,7 +302130,7 @@ name "RglassR"
 data 8
 Mesh.023
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 40
 1.15998 0.55497 -0.36609
@@ -302313,7 +302313,7 @@ name "RglassR_int"
 data 8
 Mesh.738
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 40
 1.15998 0.55497 -0.36609
@@ -319024,7 +319024,7 @@ name "roof"
 data 8
 Mesh.294
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 143
 1.12463 0.71788 -0.36894
@@ -321209,7 +321209,7 @@ name "roof_int"
 data 8
 Mesh.777
 crease 6.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 143
 1.12463 0.71788 -0.36894
@@ -325164,7 +325164,7 @@ name "RPM_glass"
 data 12
 Cylinder.026
 crease 30.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 33
 -0.12635 0.19831 0.18999
@@ -400117,7 +400117,7 @@ name "windshield"
 data 8
 Mesh.026
 crease 40.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 26
 -0.11435 0.16371 -0.37594
@@ -400237,7 +400237,7 @@ name "windshield._int"
 data 8
 Mesh.733
 crease 40.0
-texture "Glass.png"
+texture "glass.png"
 texrep 1 1
 numvert 26
 -0.11435 0.16371 -0.37594
